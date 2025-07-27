@@ -28,11 +28,10 @@
 - ✅ **Architected microservices** handling 10,000+ concurrent requests
 - ✅ **Cut infrastructure costs by 30%** using intelligent cloud resource management
 
-### **Ready to Deploy from Day One**
+### **Ready to Deploy into IT environment from Day One**
 - 🎓 **Master's in Information Systems** - Northeastern University (Dec 2024)
 - 🏆 **Google Cloud Certified** - Cloud Digital Leader
 - 🏆 **Oracle Cloud Infrastructure** - Certified Architect Associate
-- 💼 **Production experience** with enterprise-grade cloud solutions
 
 ---
 
@@ -137,7 +136,7 @@ This interactive portfolio showcases:
 ## 🚀 **Next Steps**
 
 1. **Review my live portfolio** to see technical skills in action
-2. **Check my GitHub** for code quality and project depth  
+2. **Check my GitHub** for code quality and project depth
 3. **Schedule a conversation** to discuss your team's cloud infrastructure needs
 4. **Reference my certifications** to verify technical competency
 
