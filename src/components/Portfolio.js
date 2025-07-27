@@ -434,7 +434,7 @@ const Portfolio = () => {
                                     </div>
                                 </div>
 
-                                <a href="http://saikalyanbportfolio.vercel.app" target="_blank" style={styles.projectButton}>
+                                <a href="https://saikalyanbterminalportfolio.vercel.app" target="_blank" style={styles.projectButton}>
                                     <ExternalLink size={20} />
                                     Experience the Terminal
                                 </a>
@@ -447,10 +447,10 @@ const Portfolio = () => {
                                 <div style={styles.terminalDemoBody}>
                                     <div style={styles.helpCommand}>$ help</div>
                                     <div style={styles.helpText}>Available commands:</div>
-                                    <div style={styles.helpItem}>about    - Learn about me</div>
-                                    <div style={styles.helpItem}>projects - View my projects</div>
-                                    <div style={styles.helpItem}>skills   - Technical expertise</div>
-                                    <div style={styles.helpItem}>contact  - Get in touch</div>
+                                    <div style={styles.helpItem}>ls about    - Learn about me</div>
+                                    <div style={styles.helpItem}>ls projects - View my projects</div>
+                                    <div style={styles.helpItem}>ls skills   - Technical expertise</div>
+                                    <div style={styles.helpItem}>ls contact  - Get in touch</div>
                                     <div style={styles.helpCommand}>$ █</div>
                                 </div>
                             </div>
