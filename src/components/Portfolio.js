@@ -453,7 +453,7 @@ const Portfolio = () => {
                             <div>
                                 <div style={styles.projectHeader}>
                                     <Terminal style={styles.terminalIcon} size={32} />
-                                    <h3 style={styles.projectTitle}>Terminal Portfolio Experience</h3>
+                                    <h3 style={styles.projectTitle}>My Terminal-based Portfolio</h3>
                                 </div>
                                 <p style={styles.projectDescription}>
                                     An interactive terminal-based portfolio that showcases my technical skills through a unique command-line interface.
