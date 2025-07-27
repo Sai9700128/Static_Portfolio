@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, ExternalLink, Terminal, Award, Underline } from 'lucide-react';
+import myprofilePic from '../assets/mypicture.png'; // Ensure you have a profile picture in this path
 
 const Portfolio = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -223,6 +224,24 @@ const Portfolio = () => {
                             transform: scale(1);
                         }
                     }
+                    
+                    @keyframes profileGlow {
+                        0%, 100% {
+                            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3), 0 0 40px rgba(251, 146, 60, 0.2);
+                        }
+                        50% {
+                            box-shadow: 0 0 30px rgba(6, 182, 212, 0.5), 0 0 60px rgba(251, 146, 60, 0.3);
+                        }
+                    }
+                    
+                    @keyframes profileFloat {
+                        0%, 100% {
+                            transform: translateY(0px);
+                        }
+                        50% {
+                            transform: translateY(-5px);
+                        }
+                    }
                         @keyframes emojiFloat {
                         0%, 100% {
                             transform: translateY(0px) translateX(0px) rotate(0deg);
@@ -264,6 +283,8 @@ const Portfolio = () => {
                         100% {
                             opacity: 0.8;
                             transform: translateY(0px) scale(1);
+                        }
+                    }
                 `}
             </style>
             
@@ -339,7 +360,7 @@ const Portfolio = () => {
                         </div>
                     </div>
 
-                    {/* Terminal Preview */}
+                    {/* Terminal Preview with Profile Picture */}
                     <div style={{
                         ...styles.heroRight,
                         ...(isVisible ? styles.visibleDelayed : styles.hidden)
@@ -354,6 +375,26 @@ const Portfolio = () => {
                                 <span style={styles.terminalTitle}>sai@cloud-terminal</span>
                             </div>
                             <div style={styles.terminalBody}>
+                                {/* Profile Picture Section */}
+                                <div style={styles.profileSection}>
+                                    <div style={styles.profileImageContainer}>
+                                        <img 
+                                            src={myprofilePic}
+                                            alt="Sai Kalyan Burra"
+                                            style={styles.profileImage}
+                                        />
+                                        <div style={styles.profileBorder}></div>
+                                    </div>
+                                    <div style={styles.profileInfo}>
+                                        <div style={styles.profileName}>Sai Kalyan Burra</div>
+                                        <div style={styles.profileRole}>Cloud DevOps Engineer</div>
+                                        <div style={styles.profileStatus}>
+                                            <div style={styles.statusDot}></div>
+                                            Available for opportunities
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style={styles.terminalDivider}></div>
                                 <pre style={styles.terminalText}>{terminalText}</pre>
                                 <span style={styles.cursor}>|</span>
                             </div>
@@ -412,7 +453,7 @@ const Portfolio = () => {
                             <div>
                                 <div style={styles.projectHeader}>
                                     <Terminal style={styles.terminalIcon} size={32} />
-                                    <h3 style={styles.projectTitle}>Terminal Portfolio Experience</h3>
+                                    <h3 style={styles.projectTitle}>My Terminal-based Portfolio</h3>
                                 </div>
                                 <p style={styles.projectDescription}>
                                     An interactive terminal-based portfolio that showcases my technical skills through a unique command-line interface.
@@ -1072,6 +1113,77 @@ const styles = {
         padding: '1.5rem',
         fontFamily: 'Monaco, "Cascadia Code", "Roboto Mono", monospace',
         fontSize: '0.875rem',
+    },
+    // Profile Section Styles
+    profileSection: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '1rem',
+        marginBottom: '1.5rem',
+        padding: '1rem',
+        background: 'rgba(6, 182, 212, 0.05)',
+        borderRadius: '0.5rem',
+        border: '1px solid rgba(6, 182, 212, 0.2)',
+    },
+    profileImageContainer: {
+        position: 'relative',
+        flexShrink: 0,
+    },
+    profileImage: {
+        width: '160px',
+        height: '160px',
+        borderRadius: '50%',
+        objectFit: 'cover',
+        border: '3px solid transparent',
+        background: 'linear-gradient(45deg, #06b6d4, #fb923c)',
+        backgroundClip: 'padding-box',
+        animation: 'profileGlow 3s ease-in-out infinite',
+        transition: 'transform 0.3s ease',
+        cursor: 'pointer',
+    },
+    profileBorder: {
+        position: 'absolute',
+        top: '-3px',
+        left: '-3px',
+        width: '166px',
+        height: '166px',
+        borderRadius: '50%',
+        background: 'linear-gradient(45deg, #06b6d4, #fb923c, #22c55e)',
+        zIndex: -1,
+        animation: 'profileGlow 3s ease-in-out infinite',
+    },
+    profileInfo: {
+        flex: 1,
+    },
+    profileName: {
+        fontSize: '1.125rem',
+        fontWeight: 'bold',
+        color: '#ffffff',
+        marginBottom: '0.25rem',
+    },
+    profileRole: {
+        fontSize: '0.875rem',
+        color: '#06b6d4',
+        marginBottom: '0.5rem',
+    },
+    profileStatus: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        fontSize: '0.75rem',
+        color: '#94a3b8',
+    },
+    statusDot: {
+        width: '8px',
+        height: '8px',
+        borderRadius: '50%',
+        background: '#22c55e',
+        animation: 'pulse 2s ease-in-out infinite',
+    },
+    terminalDivider: {
+        height: '1px',
+        background: 'linear-gradient(to right, transparent, #06b6d4, transparent)',
+        margin: '1rem 0',
     },
     terminalText: {
         color: '#22c55e',
