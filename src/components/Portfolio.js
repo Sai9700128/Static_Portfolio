@@ -137,8 +137,7 @@ const Portfolio = () => {
                 "🔧 85% faster deployments with automated DevOps pipeline",
                 "📊 Supports 1M+ daily redirections across 5 microservices"
             ],
-            githubUrl: "https://github.com/Sai9700128/linkops-platform",
-            liveUrl: "https://linkops.saikalyan.dev" // Replace with your actual live URL
+            githubUrl: "https://github.com/Sai9700128/LinkOps-URL-Shortener-.git",
         },
         {
             title: "Cloud-Native Backend Application",
@@ -151,11 +150,10 @@ const Portfolio = () => {
                 "🔒 SOC 2 compliance with AWS Secrets Manager integration",
                 "💰 30% storage cost reduction with S3 lifecycle policies"
             ],
-            githubUrl: "https://github.com/Sai9700128/cloud-native-backend",
-            liveUrl: null // No live URL for this project
+            githubUrl: "https://github.com/Sai9700128/Webapp.git",
         },
         {
-            title: "Containerized React Application",
+            title: "Containerized My Portfolio",
             subtitle: "Cloud-Native Infrastructure with Docker & AWS",
             period: "July - August 2025", 
             tech: "Docker • React • AWS Elastic Beanstalk • IAM • S3 • CloudFormation",
@@ -167,8 +165,7 @@ const Portfolio = () => {
                 "📈 Enhanced health reporting and container monitoring with CloudWatch integration",
                 "⚡ Infrastructure as Code approach with automated resource provisioning"
             ],
-            githubUrl: "https://github.com/Sai9700128/containerized-react-app",
-            liveUrl: "http://app-env.eba-mfedpuwg.us-east-1.elasticbeanstalk.com" // Your actual Elastic Beanstalk URL
+            githubUrl: "https://github.com/Sai9700128/Static_Portfolio",
         }
     ];
 
@@ -410,7 +407,7 @@ const Portfolio = () => {
                                     </div>
                                     <div style={styles.profileInfo}>
                                         <div style={styles.profileName}>Sai Kalyan Burra</div>
-                                        <div style={styles.profileRole}>Cloud DevOps Engineer</div>
+                                        <div style={styles.profileRole}>Cloud & DevOps Engineer</div>
                                         <div style={styles.profileStatus}>
                                             <div style={styles.statusDot}></div>
                                             Available for opportunities
@@ -562,8 +559,6 @@ const Portfolio = () => {
                                                 rel="noopener noreferrer"
                                                 style={styles.projectActionSecondary}
                                             >
-                                                <ExternalLink size={18} />
-                                                Live Demo
                                             </a>
                                         )}
                                     </div>
