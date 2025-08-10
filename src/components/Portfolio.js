@@ -116,10 +116,13 @@ const Portfolio = () => {
     }, []);
 
     const skills = {
-        "Cloud Platforms": ["AWS (EC2, S3, RDS, ECS, EKS)", "Google Cloud Platform", "Digital Ocean"],
-        "Infrastructure": ["Terraform", "Docker & Kubernetes", "Packer", "CloudFormation"],
-        "CI/CD & DevOps": ["GitHub Actions", "Jenkins", "ArgoCD", "GitOps"],
-        "Languages": ["Java (Spring Boot)", "Python", "Bash", "React", "MySQL"]
+        "Cloud Platforms": ["AWS (EC2, S3, RDS, IAM, VPC, Route 53, ECS, EKS, GuardDuty, Security Hub, CloudWatch)", "GCP (Compute Engine, Cloud Storage)"],
+        "Infrastructure & Security": ["Terraform (modules, remote state)", "Kubernetes (EKS, Helm)", "Docker (multi-stage builds)", "Linux administration", "network security", "IAM role-based access control"],
+        "Programming Languages": ["Java (Spring Boot, JPA, REST APIs)", "Python (scripting, automation)", "Bash", "YAML", "HCL"],
+        "CI/CD & DevOps": ["GitHub Actions", "Jenkins", "ArgoCD", "Git", "automated deployment pipelines", "infrastructure automation"],
+        "Databases & Caching": ["MySQL", "Redis", "database optimization", "performance tuning"],
+        "Monitoring & Compliance": ["AWS CloudWatch", "Elasticsearch", "SOC 2 compliance implementation", "security auditing"],
+        "Authentication & Security": ["SSO integration", "OAuth", "SAML", "AWS Secrets Manager", "encryption-at-rest", "TLS"]
     };
 
     const projects = [
@@ -133,7 +136,9 @@ const Portfolio = () => {
                 "⚡ Reduced response time from 200ms to 50ms with Redis caching",
                 "🔧 85% faster deployments with automated DevOps pipeline",
                 "📊 Supports 1M+ daily redirections across 5 microservices"
-            ]
+            ],
+            githubUrl: "https://github.com/Sai9700128/linkops-platform",
+            liveUrl: "https://linkops.saikalyan.dev" // Replace with your actual live URL
         },
         {
             title: "Cloud-Native Backend Application",
@@ -145,7 +150,25 @@ const Portfolio = () => {
                 "⏱️ 40% reduction in infrastructure provisioning time",
                 "🔒 SOC 2 compliance with AWS Secrets Manager integration",
                 "💰 30% storage cost reduction with S3 lifecycle policies"
-            ]
+            ],
+            githubUrl: "https://github.com/Sai9700128/cloud-native-backend",
+            liveUrl: null // No live URL for this project
+        },
+        {
+            title: "Containerized React Application",
+            subtitle: "Cloud-Native Infrastructure with Docker & AWS",
+            period: "July - August 2025", 
+            tech: "Docker • React • AWS Elastic Beanstalk • IAM • S3 • CloudFormation",
+            highlights: [
+                "🐳 Multi-stage Docker containerization with optimized image layers",
+                "☁️ Cloud-native deployment on AWS with auto-scaling capabilities",
+                "🔄 Container orchestration and lifecycle management via Elastic Beanstalk",
+                "🔐 IAM service roles and instance profiles following AWS security best practices",
+                "📈 Enhanced health reporting and container monitoring with CloudWatch integration",
+                "⚡ Infrastructure as Code approach with automated resource provisioning"
+            ],
+            githubUrl: "https://github.com/Sai9700128/containerized-react-app",
+            liveUrl: "http://app-env.eba-mfedpuwg.us-east-1.elasticbeanstalk.com" // Your actual Elastic Beanstalk URL
         }
     ];
 
@@ -523,7 +546,26 @@ const Portfolio = () => {
                                     </div>
 
                                     <div style={styles.projectActions}>
-                                        <a href="https://github.com/Sai9700128?tab=repositories" style={styles.projectActionSecondary}>Source Code</a>
+                                        <a 
+                                            href={project.githubUrl} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            style={styles.projectActionPrimary}
+                                        >
+                                            <Github size={18} />
+                                            Source Code
+                                        </a>
+                                        {project.liveUrl && (
+                                            <a 
+                                                href={project.liveUrl} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                style={styles.projectActionSecondary}
+                                            >
+                                                <ExternalLink size={18} />
+                                                Live Demo
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -1516,24 +1558,34 @@ const styles = {
         justifyContent: 'center',
     },
     projectActionPrimary: {
-        background: 'rgba(255, 255, 255, 0.1)',
+        background: 'linear-gradient(to right, #06b6d4, #fb923c)',
         padding: '0.75rem 1.5rem',
         borderRadius: '0.5rem',
         fontWeight: '600',
         color: 'white',
         textDecoration: 'none',
         textAlign: 'center',
-        transition: 'background 0.3s ease',
+        transition: 'all 0.3s ease',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '0.5rem',
+        boxShadow: '0 4px 15px rgba(6, 182, 212, 0.3)',
     },
     projectActionSecondary: {
-        border: '1px solid rgba(255, 255, 255, 0.2)',
+        border: '1px solid rgba(255, 255, 255, 0.3)',
+        background: 'rgba(255, 255, 255, 0.05)',
         padding: '0.75rem 1.5rem',
         borderRadius: '0.5rem',
         fontWeight: '600',
         color: 'white',
         textDecoration: 'none',
         textAlign: 'center',
-        transition: 'border-color 0.3s ease',
+        transition: 'all 0.3s ease',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '0.5rem',
     },
     skillsSection: {
         padding: '5rem 1.5rem',
