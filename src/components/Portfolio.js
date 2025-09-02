@@ -142,29 +142,43 @@ const Portfolio = () => {
     }, []);
 
     const skills = {
-        "Cloud Platforms": ["AWS (EC2, S3, RDS, IAM, VPC, Route 53, ECS, EKS, GuardDuty, Security Hub, CloudWatch)", "GCP (Compute Engine, Cloud Storage)"],
+        "Programming Languages": ["Python (scripting, automation, backend)", "Java (Spring Boot, REST APIs)", "Go (learning)", "Bash", "YAML", "HCL"],
+        "Cloud Platforms": ["AWS (EC2, S3, RDS, IAM, VPC, Route 53, Lambda, Step Functions, DynamoDb, ECS, EKS, GuardDuty, Security Hub, CloudWatch)", "GCP (Compute Engine, Cloud Storage)"],
         "Infrastructure & Security": ["Terraform (modules, remote state)", "Kubernetes (EKS, Helm)", "Docker (multi-stage builds)", "Linux administration", "network security", "IAM role-based access control"],
-        "Programming Languages": ["Java (Spring Boot, JPA, REST APIs)", "Python (scripting, automation)", "Bash", "YAML", "HCL"],
-        "CI/CD & DevOps": ["GitHub Actions", "Jenkins", "ArgoCD", "Git", "automated deployment pipelines", "infrastructure automation"],
-        "Databases & Caching": ["MySQL", "Redis", "database optimization", "performance tuning"],
-        "Monitoring & Compliance": ["AWS CloudWatch", "Elasticsearch", "SOC 2 compliance implementation", "security auditing"],
+        "CI/CD & DevOps": ["Git", "GitOps", "GitHub Actions", "ArgoCD", "infrastructure automation"],
+        "Databases & Caching": ["MySQL", "Redis", "DynamoDB", "database optimization", "performance tuning"],
+        "Monitoring & Compliance": ["AWS CloudWatch", "Elasticsearch", "Prometheus (learning)", "SOC 2 compliance implementation", "security auditing"],
         "Authentication & Security": ["SSO integration", "OAuth", "SAML", "AWS Secrets Manager", "encryption-at-rest", "TLS"]
     };
 
     const projects = [
-        {
-            title: "LinkOps Platform",
-            subtitle: "Cloud-Native URL Shortening Service",
-            period: "May 2025 - Present",
-            tech: "Spring Boot • MySQL • Docker • Redis • Kubernetes • AWS ECS • Terraform",
+    {
+            title: "Enterprise Multi-Cloud Disaster Recovery Platform",
+            subtitle: "AWS Architecture & Infrastructure Design",
+            period: "August 2025 - Present",
+            tech: "AWS EC2 • S3 • RDS • Lambda • CloudWatch • Route 53 • VPC • IAM • Step Functions • EventBridge",
             highlights: [
-                "🚀 Handles 10,000+ concurrent requests with 99.5% uptime",
-                "⚡ Reduced response time from 200ms to 50ms with Redis caching",
-                "🔧 85% faster deployments with automated DevOps pipeline",
-                "📊 Supports 1M+ daily redirections across 5 microservices"
+                "🏗️ Designing automated multi-region disaster recovery system spanning AWS us-east-1 and us-west-2 regions with intelligent failover targeting 99.95% uptime SLA and 10-18 minute recovery time objectives (RTO)",
+                "🛡️ Building fault-tolerant infrastructure architecture using VPC configurations with redundant availability zones, Auto Scaling Groups (1-5 instances), Application Load Balancers, and cross-region RDS read replicas",
+                "🤖 Developing intelligent monitoring and orchestration platform using Step Functions state machines, Lambda functions for health checks, and CloudWatch alarms with Event Bridge scheduling for automated monitoring every 5 minutes",
+                "🔐 Implementing comprehensive security framework using IAM role-based access controls, least-privilege policies, S3 encryption-at-rest (SSE-S3), and network isolation through private subnets and security groups",
+                "💰 Creating cost-optimized elastic scaling strategy reducing standby infrastructure costs by 75% while maintaining enterprise-grade availability requirements through automated resource provisioning and DNS-based traffic routing"
             ],
-            githubUrl: "https://github.com/Sai9700128/LinkOps-URL-Shortener-.git",
+            githubUrl: "#", // Add your GitHub URL when available
         },
+        // {
+        //     title: "LinkOps Platform",
+        //     subtitle: "Cloud-Native URL Shortening Service",
+        //     period: "May 2025 - Present",
+        //     tech: "Spring Boot • MySQL • Docker • Redis • Kubernetes • AWS ECS • Terraform",
+        //     highlights: [
+        //         "🚀 Handles 10,000+ concurrent requests with 99.5% uptime",
+        //         "⚡ Reduced response time from 200ms to 50ms with Redis caching",
+        //         "🔧 85% faster deployments with automated DevOps pipeline",
+        //         "📊 Supports 1M+ daily redirections across 5 microservices"
+        //     ],
+        //     githubUrl: "https://github.com/Sai9700128/LinkOps-URL-Shortener-.git",
+        // },
         {
             title: "Cloud-Native Backend Application",
             subtitle: "Scalable Web Infrastructure on AWS",
