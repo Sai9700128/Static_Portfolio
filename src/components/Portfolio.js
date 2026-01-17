@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Github, Linkedin, Mail, ExternalLink, Terminal, BookOpen, Edit3, Calendar, ArrowRight, Briefcase } from 'lucide-react';
 import myprofilePic from '../assets/mypicture.png';
 
@@ -10,15 +10,15 @@ const Portfolio = () => {
     const [isTyping, setIsTyping] = useState(true);
     const [showCursor, setShowCursor] = useState(true);
 
-    const roles = [
+    const roles = useMemo(() => [
         "Cloud Engineer & DevOps Specialist",
         "Multi-Cloud Infrastructure Architect",
         "Site Reliability Engineering Enthusiast",
         "Infrastructure Automation Engineer",
         "Open Source Contributor"
-    ];
+    ], []);
 
-    const terminalCommands = [
+    const terminalCommands = useMemo(() => [
         '$ whoami',
         'sai-kalyan-burra',
         'Cloud Engineer | MS @ Northeastern',
@@ -44,7 +44,7 @@ const Portfolio = () => {
         '$ ./connect',
         '📧 burra.sa@northeastern.edu',
         '💼 LinkedIn | 🐙 GitHub | ✍️ Medium'
-    ];
+    ], []);
 
     const blogPosts = [
         {
@@ -76,13 +76,13 @@ const Portfolio = () => {
 
         let currentIndex = 0;
         let currentCommand = '';
-        let isTyping = true;
+        let commandIsTyping = true;
 
         const typeInterval = setInterval(() => {
             if (currentIndex < terminalCommands.length) {
                 const command = terminalCommands[currentIndex];
 
-                if (isTyping) {
+                if (commandIsTyping) {
                     if (currentCommand.length < command.length) {
                         currentCommand += command[currentCommand.length];
                         setTerminalText(prev => {
@@ -91,11 +91,11 @@ const Portfolio = () => {
                             return lines.join('\n');
                         });
                     } else {
-                        isTyping = false;
+                        commandIsTyping = false;
                         setTimeout(() => {
                             currentIndex++;
                             currentCommand = '';
-                            isTyping = true;
+                            commandIsTyping = true;
                             setTerminalText(prev => prev + '\n');
                         }, 400);
                     }
@@ -106,7 +106,7 @@ const Portfolio = () => {
         }, 50);
 
         return () => clearInterval(typeInterval);
-    }, []);
+    }, [terminalCommands]);
 
     useEffect(() => {
         const currentRole = roles[currentRoleIndex];
@@ -255,7 +255,6 @@ const Portfolio = () => {
         ]
     };
 
-    // Updated achievements to match resume metrics
     const achievements = [
         { metric: "97%", label: "Faster Deployments" },
         { metric: "70%", label: "Faster Detection" },
@@ -554,7 +553,6 @@ const Portfolio = () => {
                 </div>
             </section>
 
-            {/* Experience Section */}
             <section id="experience" style={styles.experienceSection}>
                 <div style={styles.sectionContent}>
                     <div style={styles.sectionHeader}>
@@ -691,14 +689,6 @@ const Portfolio = () => {
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 style={styles.featuredBlogButton}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.transform = 'translateX(5px)';
-                                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(6, 182, 212, 0.4)';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.transform = 'translateX(0)';
-                                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(6, 182, 212, 0.3)';
-                                }}
                             >
                                 <span>Read on Medium</span>
                                 <ArrowRight size={20} />
@@ -713,16 +703,6 @@ const Portfolio = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     style={styles.blogPostCard}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.transform = 'translateY(-5px)';
-                                        e.currentTarget.style.boxShadow = '0 15px 35px rgba(6, 182, 212, 0.2)';
-                                        e.currentTarget.style.borderColor = 'rgba(6, 182, 212, 0.4)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.transform = 'translateY(0)';
-                                        e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.1)';
-                                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                                    }}
                                 >
                                     <div style={styles.blogPostHeader}>
                                         <h4 style={styles.blogPostTitle}>{post.title}</h4>
@@ -752,14 +732,6 @@ const Portfolio = () => {
                             target="_blank" 
                             rel="noopener noreferrer"
                             style={styles.blogCTAButton}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'translateY(-3px) scale(1.05)';
-                                e.currentTarget.style.boxShadow = '0 15px 40px rgba(251, 146, 60, 0.4)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                                e.currentTarget.style.boxShadow = '0 8px 25px rgba(251, 146, 60, 0.3)';
-                            }}
                         >
                             <BookOpen size={20} />
                             <span>Follow on Medium</span>
@@ -815,7 +787,7 @@ const Portfolio = () => {
                                         )}
                                         {project.noGithub && (
                                             <div style={styles.projectPrivateLabel}>
-                                                🔒 Private Project
+                                                📁 Works
                                             </div>
                                         )}
                                     </div>
@@ -848,17 +820,7 @@ const Portfolio = () => {
                     <div style={styles.certifications}>
                         <h3 style={styles.certificationsTitle}>Certifications</h3>
                         <div style={styles.certificationsGrid}>
-                            <div 
-                                style={styles.certificationCard1}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
-                                    e.currentTarget.style.boxShadow = '0 15px 35px rgba(66, 133, 244, 0.2)';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(66, 133, 244, 0.1)';
-                                }}
-                            >
+                            <div style={styles.certificationCard1}>
                                 <div style={styles.gcpLogo}>
                                     <span style={styles.gcpLogoText}>G</span>
                                     <span style={styles.gcpLogoCloud}>☁️</span>
@@ -868,17 +830,7 @@ const Portfolio = () => {
                                 <div style={styles.certificationDetails}>Cloud Digital Leader</div>
                                 <div style={styles.certificationValidity}>Valid: Jan 2023 - Jan 2026</div>
                             </div>
-                            <div 
-                                style={styles.certificationCard2}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
-                                    e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 153, 0, 0.2)';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(255, 153, 0, 0.1)';
-                                }}
-                            >
+                            <div style={styles.certificationCard2}>
                                 <div style={styles.awsLogo}>
                                     <span style={styles.awsLogoText}>AWS</span>
                                     <span style={styles.awsLogoCloud}>☁️</span>
@@ -1576,7 +1528,6 @@ const styles = {
         border: '3px solid #0f1419',
         zIndex: 2,
     },
-    // Experience Section Styles
     experienceSection: {
         padding: '5rem 1.5rem',
         background: 'rgba(15, 20, 25, 0.6)',
