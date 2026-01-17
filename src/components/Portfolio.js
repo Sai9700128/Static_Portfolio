@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Terminal, Award, Underline, BookOpen, Edit3, Calendar, ArrowRight } from 'lucide-react';
-import myprofilePic from '../assets/mypicture.png'; // Ensure you have a profile picture in this path
+import React, { useState, useEffect, useMemo } from 'react';
+import { Github, Linkedin, Mail, ExternalLink, Terminal, BookOpen, Edit3, Calendar, ArrowRight, Briefcase } from 'lucide-react';
+import myprofilePic from '../assets/mypicture.png';
 
 const Portfolio = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -10,68 +10,79 @@ const Portfolio = () => {
     const [isTyping, setIsTyping] = useState(true);
     const [showCursor, setShowCursor] = useState(true);
 
-    // Dynamic roles array
-    const roles = [
+    const roles = useMemo(() => [
         "Cloud Engineer & DevOps Specialist",
-        "Network Engineer & Infrastructure Expert",
-        "Site Reliability Engineer (SRE)",
-        "Solution Architect",
-        "Cloud Security & Compliance Specialist"
-    ];
+        "Multi-Cloud Infrastructure Architect",
+        "Site Reliability Engineering Enthusiast",
+        "Infrastructure Automation Engineer",
+        "Open Source Contributor"
+    ], []);
 
-    const terminalCommands = [
+    const terminalCommands = useMemo(() => [
         '$ whoami',
         'sai-kalyan-burra',
-        '$ cat skills.txt',
-        'Cloud Engineering | AWS | Terraform | Kubernetes',
-        '$ uptime',
-        '99.5% availability achieved ✅',
-        '$ git log --oneline',
-        'feat: reduced deployment time by 85%',
-        'feat: optimized response time 200ms → 50ms',
-        '$ ./linkops-platform --status',
-        'Handling 10,000+ concurrent requests 🚀'
-    ];
+        'Cloud Engineer | MS @ Northeastern',
+        '',
+        '$ cat achievements.txt',
+        '→ 97% faster deployments via GitOps',
+        '→ 70% faster incident detection',
+        '→ 80% reduced attack surface',
+        '→ 1,000+ GitHub contributions',
+        '',
+        '$ tech_stack --current',
+        '☁️  Cloud: AWS • GCP',
+        '🔧 IaC: Terraform • Helm • ArgoCD',
+        '🐳 Containers: Kubernetes • Docker • Istio',
+        '🔐 Security: Vault • OPA • Trivy',
+        '📊 Observability: Prometheus • Grafana • Loki',
+        '💻 Code: Python • Bash • TypeScript • Java',
+        '',
+        '$ ls certifications/',
+        'google-cloud-digital-leader.cert',
+        'aws-solutions-architect.in-progress',
+        '',
+        '$ ./connect',
+        '📧 burra.sa@northeastern.edu',
+        '💼 LinkedIn | 🐙 GitHub | ✍️ Medium'
+    ], []);
 
-    // Blog posts data - replace with your actual Medium articles
     const blogPosts = [
         {
             title: "Deploying My First Application on Kubernetes: A 2048 Game Journey",
             excerpt: "Learning Kubernetes by deploying a real project",
             date: "Aug 2025",
             readTime: "5 min read",
-            category: "Container orchestration",
+            category: "Container Orchestration",
             featured: true
         },
         {
             title: "My First Docker Adventure: From Clueless to Containerized in One Weekend 🐳",
-            excerpt: "How I went from “What’s a container?” to containerizing my entire portfolio website (and why I’m never going back)",
+            excerpt: "How I went from 'What's a container?' to containerizing my entire portfolio website",
             date: "July 2025",
             readTime: "12 min read",
             category: "Cloud Engineering"
         },
         {
             title: "How DNS Resolution Works: A Step-by-Step Breakdown",
-            excerpt: "How DNS works?",
-            date: "may 2025",
+            excerpt: "Understanding how your browser finds the right server",
+            date: "May 2025",
             readTime: "2 min read",
-            category: "DNS - Computer Networking"
+            category: "Networking"
         }
     ];
 
     useEffect(() => {
         setIsVisible(true);
 
-        // Terminal typing animation
         let currentIndex = 0;
         let currentCommand = '';
-        let isTyping = true;
+        let commandIsTyping = true;
 
         const typeInterval = setInterval(() => {
             if (currentIndex < terminalCommands.length) {
                 const command = terminalCommands[currentIndex];
 
-                if (isTyping) {
+                if (commandIsTyping) {
                     if (currentCommand.length < command.length) {
                         currentCommand += command[currentCommand.length];
                         setTerminalText(prev => {
@@ -80,145 +91,179 @@ const Portfolio = () => {
                             return lines.join('\n');
                         });
                     } else {
-                        isTyping = false;
+                        commandIsTyping = false;
                         setTimeout(() => {
                             currentIndex++;
                             currentCommand = '';
-                            isTyping = true;
+                            commandIsTyping = true;
                             setTerminalText(prev => prev + '\n');
-                        }, 800);
+                        }, 400);
                     }
                 }
             } else {
                 clearInterval(typeInterval);
             }
-        }, 80);
+        }, 50);
 
         return () => clearInterval(typeInterval);
-    }, []);
+    }, [terminalCommands]);
 
-    // Typing effect for dynamic roles
     useEffect(() => {
         const currentRole = roles[currentRoleIndex];
         let timeout;
 
         if (isTyping) {
-            // Typing phase
             if (displayedText.length < currentRole.length) {
                 timeout = setTimeout(() => {
                     setDisplayedText(currentRole.slice(0, displayedText.length + 1));
-                }, 80); // Typing speed
+                }, 80);
             } else {
-                // Finished typing, brief pause then start deleting
                 timeout = setTimeout(() => {
                     setIsTyping(false);
-                }, 300); // Very short pause after typing (300ms)
+                }, 300);
             }
         } else {
-            // Deleting phase
             if (displayedText.length > 0) {
                 timeout = setTimeout(() => {
                     setDisplayedText(displayedText.slice(0, -1));
-                }, 30); // Fast deleting speed (30ms)
+                }, 30);
             } else {
-                // Finished deleting, brief pause then move to next role
                 timeout = setTimeout(() => {
                     setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
                     setIsTyping(true);
-                }, 100); // Very short pause before next role (100ms)
+                }, 100);
             }
         }
 
         return () => clearTimeout(timeout);
     }, [displayedText, isTyping, currentRoleIndex, roles]);
 
-    // Cursor blinking effect
     useEffect(() => {
         const cursorInterval = setInterval(() => {
             setShowCursor(prev => !prev);
-        }, 500); // Blink every 500ms
+        }, 500);
 
         return () => clearInterval(cursorInterval);
     }, []);
 
     const skills = {
-        "Programming Languages": ["Python (scripting, automation, backend)", "Java (Spring Boot, REST APIs)", "Go (learning)", "Bash", "YAML", "HCL"],
-        "Cloud Platforms": ["AWS (EC2, S3, RDS, IAM, VPC, Route 53, Lambda, Step Functions, DynamoDb, ECS, EKS, GuardDuty, Security Hub, CloudWatch)", "GCP (Compute Engine, Cloud Storage)"],
-        "Infrastructure & Security": ["Terraform (modules, remote state)", "Kubernetes (EKS, Helm)", "Docker (multi-stage builds)", "Linux administration", "network security", "IAM role-based access control"],
-        "CI/CD & DevOps": ["Git", "GitOps", "GitHub Actions", "ArgoCD", "infrastructure automation"],
-        "Databases & Caching": ["MySQL", "Redis", "DynamoDB", "database optimization", "performance tuning"],
-        "Monitoring & Compliance": ["AWS CloudWatch", "Elasticsearch", "Prometheus (learning)", "SOC 2 compliance implementation", "security auditing"],
-        "Authentication & Security": ["SSO integration", "OAuth", "SAML", "AWS Secrets Manager", "encryption-at-rest", "TLS"]
+        "Cloud Platforms": ["AWS (EC2, VPC, S3, RDS, IAM, EKS, ECR, Lambda, CloudWatch, Route 53)", "GCP (Compute Engine, Cloud SQL)"],
+        "DevOps & IaC": ["Terraform", "Docker", "Kubernetes", "Helm", "ArgoCD", "GitHub Actions", "GitOps", "Linux", "CI/CD Pipelines"],
+        "Orchestration & Service Mesh": ["Kubernetes (EKS)", "Istio", "mTLS", "Traffic Management", "Resource Optimization"],
+        "Security": ["HashiCorp Vault", "OPA Gatekeeper", "Network Policies", "Trivy", "Container Scanning"],
+        "Observability": ["Prometheus", "Grafana", "Loki", "CloudWatch", "Kubecost", "Alerting"],
+        "Programming & Databases": ["Python", "Bash", "JavaScript", "TypeScript", "Java", "MySQL", "AWS RDS", "GCP Cloud SQL"]
     };
 
     const projects = [
-    {
-            title: "Enterprise Multi-Cloud Disaster Recovery Platform",
-            subtitle: "AWS Architecture & Infrastructure Design",
-            period: "August 2025 - Present",
-            tech: "AWS EC2 • S3 • RDS • Lambda • CloudWatch • Route 53 • VPC • IAM • Step Functions • EventBridge",
-            highlights: [
-                "🏗️ Designing automated multi-region disaster recovery system spanning AWS us-east-1 and us-west-2 regions with intelligent failover targeting 99.95% uptime SLA and 10-18 minute recovery time objectives (RTO)",
-                "🛡️ Building fault-tolerant infrastructure architecture using VPC configurations with redundant availability zones, Auto Scaling Groups (1-5 instances), Application Load Balancers, and cross-region RDS read replicas",
-                "🤖 Developing intelligent monitoring and orchestration platform using Step Functions state machines, Lambda functions for health checks, and CloudWatch alarms with Event Bridge scheduling for automated monitoring every 5 minutes",
-                "🔐 Implementing comprehensive security framework using IAM role-based access controls, least-privilege policies, S3 encryption-at-rest (SSE-S3), and network isolation through private subnets and security groups",
-                "💰 Creating cost-optimized elastic scaling strategy reducing standby infrastructure costs by 75% while maintaining enterprise-grade availability requirements through automated resource provisioning and DNS-based traffic routing"
-            ],
-            githubUrl: "#", // Add your GitHub URL when available
-        },
-        // {
-        //     title: "LinkOps Platform",
-        //     subtitle: "Cloud-Native URL Shortening Service",
-        //     period: "May 2025 - Present",
-        //     tech: "Spring Boot • MySQL • Docker • Redis • Kubernetes • AWS ECS • Terraform",
-        //     highlights: [
-        //         "🚀 Handles 10,000+ concurrent requests with 99.5% uptime",
-        //         "⚡ Reduced response time from 200ms to 50ms with Redis caching",
-        //         "🔧 85% faster deployments with automated DevOps pipeline",
-        //         "📊 Supports 1M+ daily redirections across 5 microservices"
-        //     ],
-        //     githubUrl: "https://github.com/Sai9700128/LinkOps-URL-Shortener-.git",
-        // },
         {
-            title: "Cloud-Native Backend Application",
-            subtitle: "Scalable Web Infrastructure on AWS",
+            title: "TaskFlow — Cloud-Native Microservices Platform",
+            subtitle: "Production-Grade Kubernetes Platform with GitOps & Zero-Trust Security",
+            period: "December 2025 - Present",
+            tech: "AWS EKS • Terraform • ArgoCD • Helm • GitHub Actions • Prometheus • Grafana • Istio • Vault • OPA Gatekeeper",
+            highlights: [
+                "🚀 Reduced deployment time from 2+ hours to 5 minutes by implementing CI/CD pipeline with GitHub Actions and GitOps-based continuous deployment using ArgoCD",
+                "🏗️ Provisioned production AWS infrastructure (EKS, RDS, ECR, VPC) using Terraform IaC, achieving 100% reproducible deployments and 15-minute environment setup time",
+                "🔐 Implemented zero-trust security using Network Policies, Istio mTLS encryption, and OPA Gatekeeper policy enforcement, reducing attack surface by 80%",
+                "🔑 Eliminated hardcoded credentials by integrating HashiCorp Vault for dynamic secrets injection with automatic rotation and zero-downtime credential updates",
+                "📊 Reduced mean time to detection by 70% using Prometheus metrics, Grafana dashboards, and Loki centralized logging with proactive alerting"
+            ],
+            githubUrl: "https://github.com/Sai9700128/gitops_app_Taskflow",
+            githubUrl2: "https://github.com/Sai9700128/gitops-config",
+            githubLabel1: "Repo 1",
+            githubLabel2: "Repo 2",
+            hasTwoLinks: true,
+        },
+        {
+            title: "Open Source Contributor — OpsiMate",
+            subtitle: "DevOps Monitoring Platform — Active Contributor",
+            period: "January 2026",
+            tech: "Terraform • Helm • Kubernetes • AWS EKS • EC2 • GitHub Actions • CI/CD",
+            highlights: [
+                "🔧 Developed Terraform infrastructure modules for automated test environment provisioning, including lightweight Kubernetes cluster and EC2 instances with integrated monitoring",
+                "📦 Created production-ready Helm charts for Kubernetes deployment, including deployments, services, ConfigMaps, secrets management, and persistent volume configurations",
+                "⚡ Built GitHub Actions CI/CD workflows for Helm chart validation and Terraform testing, enabling one-command environment setup that reduced provisioning time from hours to minutes"
+            ],
+            githubUrl: "https://github.com/OpsiMate/OpsiMate",
+        },
+        {
+            title: "Multi-Region Disaster Recovery on AWS",
+            subtitle: "Active-Passive DR Solution with Automated Failover",
+            period: "September - October 2025",
+            tech: "Terraform • AWS (EC2, RDS, S3, Route 53, Lambda, CloudWatch) • GitHub Actions • Bash",
+            highlights: [
+                "🌐 Architected active-passive disaster recovery solution across 2 AWS regions (us-east-1, us-west-2), configuring warm standby infrastructure targeting 5-minute RPO and 15-minute RTO",
+                "🏗️ Automated infrastructure provisioning using Terraform modules for VPCs, subnets, EC2 instances, RDS MySQL databases, and S3 buckets with versioning across both regions",
+                "🔄 Implemented Route 53 health checks with failover routing, RDS cross-region read replicas, and S3 cross-region replication for automated failover and data redundancy"
+            ],
+            githubUrl: "https://github.com/Sai9700128/Multi-Region-DR",
+        },
+        {
+            title: "Multi-Cloud Data Transfer with AWS and GCP",
+            subtitle: "Automated Data Pipeline for Multi-Cloud Architecture",
+            period: "September 2025",
+            tech: "Google Cloud Platform (GCP) • Google Cloud Storage • Storage Transfer Service • Identity Federation • AWS S3",
+            highlights: [
+                "☁️ Built an automated data transfer pipeline between AWS S3 and Google Cloud Storage to demonstrate multi-cloud architecture capabilities",
+                "🔄 Implemented disaster recovery strategies leveraging cross-cloud data replication",
+                "🔐 Configured Identity Federation for secure cross-cloud authentication and access management"
+            ],
+            noGithub: true,
+        },
+        {
+            title: "Cloud-Native Application — WebApp",
+            subtitle: "Production AWS Infrastructure with Terraform & Packer",
             period: "January - April 2025",
-            tech: "Spring Boot • MySQL • AWS • Terraform • GitHub Actions",
+            tech: "Terraform • AWS • Packer • GitHub Actions • Amazon CloudWatch • GCP",
             highlights: [
-                "🌐 Supports 5,000+ concurrent users with 99% uptime",
-                "⏱️ 40% reduction in infrastructure provisioning time",
-                "🔒 SOC 2 compliance with AWS Secrets Manager integration",
-                "💰 30% storage cost reduction with S3 lifecycle policies"
+                "🏗️ Architected AWS infrastructure supporting 5,000+ concurrent users with 99% uptime",
+                "⚡ Automated AMI builds with Packer reducing deployment time by 40% (45min to 27min)",
+                "💰 Configured S3 encryption and lifecycle policies managing 500GB+ data with 30% cost reduction",
+                "♻️ Refactored Terraform modules reducing infrastructure code duplication by 60% across environments"
             ],
-            githubUrl: "https://github.com/Sai9700128/Webapp.git",
+            githubUrl: "https://github.com/Sai9700128/Webapp",
+            githubUrl2: "https://github.com/Sai9700128/tf-aws-infra",
+            githubLabel1: "App Repo",
+            githubLabel2: "Infra Repo",
+            hasTwoLinks: true,
         },
         {
-            title: "Containerized My Portfolio",
-            subtitle: "Cloud-Native Infrastructure with Docker & AWS",
-            period: "July - August 2025", 
-            tech: "Docker • React • AWS Elastic Beanstalk • IAM • S3 • CloudFormation",
+            title: "Roomies Radar",
+            subtitle: "Roommate & Rental Accommodation Matching Platform",
+            period: "October - December 2024",
+            tech: "Domain-Driven Design (DDD) • JWT Authentication • Progressive Web App (PWA)",
             highlights: [
-                "🐳 Multi-stage Docker containerization with optimized image layers",
-                "☁️ Cloud-native deployment on AWS with auto-scaling capabilities",
-                "🔄 Container orchestration and lifecycle management via Elastic Beanstalk",
-                "🔐 IAM service roles and instance profiles following AWS security best practices",
-                "📈 Enhanced health reporting and container monitoring with CloudWatch integration",
-                "⚡ Infrastructure as Code approach with automated resource provisioning"
+                "🏠 Developed a comprehensive platform to connect individuals looking for compatible roommates and rental accommodations using Domain-Driven Design (DDD) principles",
+                "🔐 Implemented secure user authentication with JWT-based registration and login",
+                "🎯 Built sophisticated roommate matching based on preferences like gender, food habits, and room type",
+                "📱 Created Progressive Web App (PWA) ensuring accessibility and performance across all devices"
             ],
-            githubUrl: "https://github.com/Sai9700128/Static_Portfolio",
+            noGithub: true,
         }
     ];
 
+    const experience = {
+        company: "Built-in Tech (Start-up)",
+        role: "Software Engineer Intern — Mobile Development & AWS Infrastructure",
+        period: "February 2023 - July 2023",
+        location: "Hyderabad, India",
+        highlights: [
+            "Built cross-platform mobile application using Flutter and Dart, integrating Firebase services (Authentication, Cloud Firestore, Cloud Storage) to enable real-time data synchronization for 200+ property listings",
+            "Configured AWS Organizations for multi-account structure and implemented CloudWatch billing alarms, reducing unplanned cloud spend by 20%",
+            "Implemented S3 bucket policies with server-side encryption (SSE-S3), versioning, and lifecycle rules to automate storage tiering and enforce data security compliance",
+            "Deployed production website using S3 static hosting and CloudFront CDN, reducing page load times by 60% and cutting hosting costs by 40% versus EC2-based hosting"
+        ]
+    };
+
     const achievements = [
-        { metric: "99.5%", label: "System Uptime" },
-        { metric: "85%", label: "Deployment Time Reduction" },
-        { metric: "10K+", label: "Concurrent Requests" },
-        { metric: "75%", label: "Database Query Reduction" }
+        { metric: "97%", label: "Faster Deployments" },
+        { metric: "70%", label: "Faster Detection" },
+        { metric: "80%", label: "Reduced Attack Surface" },
+        { metric: "1,000+", label: "GitHub Contributions" }
     ];
 
     return (
         <div style={styles.container}>
-            {/* Background Elements */}
             <div style={styles.backgroundElements}>
                 <div style={styles.floatingOrb1}></div>
                 <div style={styles.floatingOrb2}></div>
@@ -229,9 +274,7 @@ const Portfolio = () => {
                 <div style={styles.sparkle2}></div>
                 <div style={styles.sparkle3}></div>
                 <div style={styles.sparkle4}></div>
-            
 
-                {/* Floating Emoji Effects */}
                 <div style={styles.emojiFloat1}>☁️</div>
                 <div style={styles.emojiFloat2}>⚡</div>
                 <div style={styles.emojiFloat3}>🚀</div>
@@ -242,7 +285,7 @@ const Portfolio = () => {
                 <div style={styles.emojiFloat9}>🗄️</div>
                 <div style={styles.emojiFloat10}>✨</div>
             </div>
-            {/* Add keyframes for animations */}
+
             <style>
                 {`
                     @keyframes pulse {
@@ -302,7 +345,8 @@ const Portfolio = () => {
                             transform: translateY(-5px);
                         }
                     }
-                        @keyframes emojiFloat {
+                    
+                    @keyframes emojiFloat {
                         0%, 100% {
                             transform: translateY(0px) translateX(0px) rotate(0deg);
                         }
@@ -316,6 +360,7 @@ const Portfolio = () => {
                             transform: translateY(-10px) translateX(8px) rotate(2deg);
                         }
                     }
+                    
                     @keyframes emojiBounce {
                         0%, 100% {
                             transform: translateY(0px) scale(1);
@@ -324,6 +369,7 @@ const Portfolio = () => {
                             transform: translateY(-20px) scale(1.1);
                         }
                     }
+                    
                     @keyframes emojiSpin {
                         0% {
                             transform: rotate(0deg) translateY(0px);
@@ -335,6 +381,7 @@ const Portfolio = () => {
                             transform: rotate(360deg) translateY(0px);
                         }
                     }
+                    
                     @keyframes emojiEntrance {
                         0% {
                             opacity: 0;
@@ -345,6 +392,7 @@ const Portfolio = () => {
                             transform: translateY(0px) scale(1);
                         }
                     }
+                    
                     @keyframes slideInUp {
                         from {
                             opacity: 0;
@@ -358,11 +406,11 @@ const Portfolio = () => {
                 `}
             </style>
             
-            {/* Navigation */}
             <nav style={styles.nav}>
                 <div style={styles.navContent}>
                     <div style={styles.logo}>&lt;Sai/Kalyan&gt;</div>
                     <div style={styles.navLinks}>
+                        <a href="#experience" style={styles.navLink}>Experience</a>
                         <a href="#projects" style={styles.navLink}>Projects</a>
                         <a href="#blog" style={styles.navLink}>Blog</a>
                         <a href="#skills" style={styles.navLink}>Skills</a>
@@ -371,7 +419,6 @@ const Portfolio = () => {
                 </div>
             </nav>
 
-            {/* Hero Section */}
             <section style={styles.hero}>
                 <div style={styles.heroGrid}>
                     <div style={{
@@ -384,7 +431,6 @@ const Portfolio = () => {
                             <span>Burra</span>
                         </h1>
                         
-                        {/* Dynamic Role Title with Typing Effect */}
                         <div style={styles.roleContainer}>
                             <p style={styles.heroSubtitle}>
                                 <span style={styles.dynamicRole}>
@@ -398,13 +444,14 @@ const Portfolio = () => {
                         </div>
                         
                         <p style={styles.heroDescription}>
-                            Building scalable cloud infrastructure with{' '}
-                            <span style={styles.highlight1}>99.5% uptime</span>, implementing automated CI/CD pipelines that reduce deployment time by{' '}
-                            <span style={styles.highlight2}>85%</span>, and architecting microservices that handle{' '}
-                            <span style={styles.highlight3}>10,000+ concurrent requests</span>.
+                            Cloud Engineer with proven results:{' '}
+                            <span style={styles.highlight1}>97% faster deployments</span> via GitOps,{' '}
+                            <span style={styles.highlight2}>70% faster incident detection</span> through Prometheus/Grafana observability, and{' '}
+                            <span style={styles.highlight3}>80% reduced attack surface</span> using zero-trust security. 
+                            Hands-on expertise in AWS, Terraform, Kubernetes, and CI/CD automation. 
+                            Active open source contributor with <span style={styles.highlight1}>1,000+ GitHub contributions</span>.
                         </p>
 
-                        {/* Achievement Metrics */}
                         <div style={styles.metrics}>
                             {achievements.map((achievement, index) => (
                                 <div key={index} style={styles.metricCard}>
@@ -414,24 +461,22 @@ const Portfolio = () => {
                             ))}
                         </div>
 
-                        {/* Contact Links */}
                         <div style={styles.contactButtons}>
                             <a href="mailto:burra.sa@northeastern.edu" style={styles.primaryButton}>
                                 <Mail size={20} />
                                 Get In Touch
                             </a>
-                            <a href="https://github.com/Sai9700128" target='_blank' style={styles.secondaryButton}>
+                            <a href="https://github.com/Sai9700128" target='_blank' rel="noopener noreferrer" style={styles.secondaryButton}>
                                 <Github size={20} />
                                 GitHub
                             </a>
-                            <a href="https://www.linkedin.com/in/sai-kalyan-burra/" target='_blank' style={styles.secondaryButton}>
+                            <a href="https://www.linkedin.com/in/sai-kalyan-burra/" target='_blank' rel="noopener noreferrer" style={styles.secondaryButton}>
                                 <Linkedin size={20} />
                                 LinkedIn
                             </a>
                         </div>
                     </div>
 
-                    {/* Terminal Preview with Profile Picture */}
                     <div style={{
                         ...styles.heroRight,
                         ...(isVisible ? styles.visibleDelayed : styles.hidden)
@@ -446,7 +491,6 @@ const Portfolio = () => {
                                 <span style={styles.terminalTitle}>sai@cloud-terminal</span>
                             </div>
                             <div style={styles.terminalBody}>
-                                {/* Profile Picture Section */}
                                 <div style={styles.profileSection}>
                                     <div style={styles.profileImageContainer}>
                                         <img 
@@ -474,30 +518,28 @@ const Portfolio = () => {
                 </div>
             </section>
 
-            {/* Education Timeline */}
             <section style={styles.educationSection}>
                 <div style={styles.education}>
                     <div style={styles.sectionContent}>
                         <h3 style={styles.educationTitle}>Education</h3>
                         <div style={styles.timeline}>
-                            {/* Timeline Line */}
                             <div style={styles.timelineLine}></div>
                             
                             <div style={styles.timelineItem}>
                                 <div style={styles.timelineContent}>
                                     <div style={styles.educationCard}>
                                         <h4 style={styles.institutionName}>Northeastern University</h4>
-                                        <p style={styles.degreeName}>Master of Science in Information Systems</p>
+                                        <p style={styles.degreeName}>Master of Science in Software Engineering Systems</p>
                                         <p style={styles.location}>Boston, MA</p>
                                     </div>
-                                    <div style={styles.timelineDate}>Expected Dec 2024</div>
+                                    <div style={styles.timelineDate}>Sep 2024 - May 2026</div>
                                 </div>
                                 <div style={styles.timelineDot}></div>
                             </div>
                             
                             <div style={{...styles.timelineItem, ...styles.timelineItemRight}}>
                                 <div style={styles.timelineContent}>
-                                    <div style={styles.timelineDate}>Aug 2021</div>
+                                    <div style={styles.timelineDate}>Jun 2021 - Apr 2024</div>
                                     <div style={styles.educationCard}>
                                         <h4 style={styles.institutionName}>KL University</h4>
                                         <p style={styles.degreeName}>Bachelor in Electronics and Communication Engineering</p>
@@ -511,12 +553,44 @@ const Portfolio = () => {
                 </div>
             </section>
 
-            {/* Featured Project */}
+            <section id="experience" style={styles.experienceSection}>
+                <div style={styles.sectionContent}>
+                    <div style={styles.sectionHeader}>
+                        <h2 style={styles.sectionTitle}>Professional Experience</h2>
+                        <p style={styles.sectionSubtitle}>Building scalable solutions in the cloud</p>
+                    </div>
+
+                    <div style={styles.experienceCard}>
+                        <div style={styles.experienceHeader}>
+                            <div style={styles.experienceIcon}>
+                                <Briefcase size={24} />
+                            </div>
+                            <div style={styles.experienceInfo}>
+                                <h3 style={styles.experienceCompany}>{experience.company}</h3>
+                                <p style={styles.experienceRole}>{experience.role}</p>
+                                <div style={styles.experienceMeta}>
+                                    <span style={styles.experiencePeriod}>{experience.period}</span>
+                                    <span style={styles.experienceLocation}>📍 {experience.location}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style={styles.experienceHighlights}>
+                            {experience.highlights.map((highlight, index) => (
+                                <div key={index} style={styles.experienceHighlight}>
+                                    <div style={styles.highlightDot}></div>
+                                    <span>{highlight}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section style={styles.featuredProject}>
                 <div style={styles.sectionContent}>
                     <div style={styles.sectionHeader}>
                         <h2 style={styles.sectionTitle}>Featured Project</h2>
-                        <p style={styles.sectionSubtitle}>My Interactive Terminal Website - Live & Production Ready</p>
+                        <p style={styles.sectionSubtitle}>TaskFlow — Production-Grade Kubernetes Platform</p>
                     </div>
 
                     <div style={styles.projectCard}>
@@ -524,45 +598,56 @@ const Portfolio = () => {
                             <div>
                                 <div style={styles.projectHeader}>
                                     <Terminal style={styles.terminalIcon} size={32} />
-                                    <h3 style={styles.projectTitle}>My Terminal-based Portfolio</h3>
+                                    <h3 style={styles.projectTitle}>TaskFlow</h3>
                                 </div>
                                 <p style={styles.projectDescription}>
-                                    An interactive terminal-based portfolio that showcases my technical skills through a unique command-line interface.
-                                    Built with modern web technologies and deployed on cloud infrastructure.
+                                    A cloud-native microservices platform featuring GitOps deployment, zero-trust security, 
+                                    and comprehensive observability. Achieved 97% faster deployments and 70% faster incident detection.
                                 </p>
 
                                 <div style={styles.projectFeatures}>
                                     <div style={styles.feature}>
                                         <div style={styles.featureDot1}></div>
-                                        <span>Interactive command-line interface</span>
+                                        <span>GitOps with ArgoCD & GitHub Actions</span>
                                     </div>
                                     <div style={styles.feature}>
                                         <div style={styles.featureDot2}></div>
-                                        <span>Real-time system monitoring</span>
+                                        <span>Zero-trust: Istio mTLS + OPA Gatekeeper</span>
                                     </div>
                                     <div style={styles.feature}>
                                         <div style={styles.featureDot3}></div>
-                                        <span>Cloud-deployed with 99.9% uptime</span>
+                                        <span>Observability: Prometheus + Grafana + Loki</span>
+                                    </div>
+                                    <div style={styles.feature}>
+                                        <div style={styles.featureDot1}></div>
+                                        <span>Secrets: HashiCorp Vault dynamic injection</span>
                                     </div>
                                 </div>
 
-                                <a href="https://saikalyanbterminalportfolio.vercel.app" target="_blank" style={styles.projectButton}>
-                                    <ExternalLink size={20} />
-                                    Experience the Terminal
-                                </a>
+                                <div style={styles.featuredProjectButtons}>
+                                    <a href="https://github.com/Sai9700128/gitops_app_Taskflow" target="_blank" rel="noopener noreferrer" style={styles.projectButton}>
+                                        <Github size={20} />
+                                        Repo 1
+                                    </a>
+                                    <a href="https://github.com/Sai9700128/gitops-config" target="_blank" rel="noopener noreferrer" style={styles.projectButtonSecondary}>
+                                        <Github size={20} />
+                                        Repo 2
+                                    </a>
+                                </div>
                             </div>
 
                             <div style={styles.terminalDemo}>
                                 <div style={styles.terminalDemoHeader}>
-                                    <span style={styles.terminalDemoTitle}>~ Welcome to Terminal Portfolio ~</span>
+                                    <span style={styles.terminalDemoTitle}>~ TaskFlow Deployment Pipeline ~</span>
                                 </div>
                                 <div style={styles.terminalDemoBody}>
-                                    <div style={styles.helpCommand}>$ help</div>
-                                    <div style={styles.helpText}>Available commands:</div>
-                                    <div style={styles.helpItem}>ls about    - Learn about me</div>
-                                    <div style={styles.helpItem}>ls projects - View my projects</div>
-                                    <div style={styles.helpItem}>ls skills   - Technical expertise</div>
-                                    <div style={styles.helpItem}>ls contact  - Get in touch</div>
+                                    <div style={styles.helpCommand}>$ kubectl get deployments -n taskflow</div>
+                                    <div style={styles.helpText}>NAME              READY   STATUS</div>
+                                    <div style={styles.helpItem}>api-gateway       3/3     Running</div>
+                                    <div style={styles.helpItem}>task-service      3/3     Running</div>
+                                    <div style={styles.helpItem}>user-service      3/3     Running</div>
+                                    <div style={styles.helpCommand}>$ argocd app sync taskflow</div>
+                                    <div style={styles.helpItem}>✓ Synced (Healthy)</div>
                                     <div style={styles.helpCommand}>$ █</div>
                                 </div>
                             </div>
@@ -571,7 +656,6 @@ const Portfolio = () => {
                 </div>
             </section>
 
-            {/* Blog Section */}
             <section id="blog" style={styles.blogSection}>
                 <div style={styles.sectionContent}>
                     <div style={styles.sectionHeader}>
@@ -580,7 +664,6 @@ const Portfolio = () => {
                     </div>
 
                     <div style={styles.blogGrid}>
-                        {/* Featured Blog Post */}
                         <div style={styles.featuredBlogCard}>
                             <div style={styles.featuredBlogHeader}>
                                 <div style={styles.featuredBlogIcon}>
@@ -606,21 +689,12 @@ const Portfolio = () => {
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 style={styles.featuredBlogButton}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.transform = 'translateX(5px)';
-                                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(6, 182, 212, 0.4)';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.transform = 'translateX(0)';
-                                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(6, 182, 212, 0.3)';
-                                }}
                             >
                                 <span>Read on Medium</span>
                                 <ArrowRight size={20} />
                             </a>
                         </div>
 
-                        {/* Regular Blog Posts */}
                         <div style={styles.blogPostsList}>
                             {blogPosts.slice(1).map((post, index) => (
                                 <a
@@ -629,16 +703,6 @@ const Portfolio = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     style={styles.blogPostCard}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.transform = 'translateY(-5px)';
-                                        e.currentTarget.style.boxShadow = '0 15px 35px rgba(6, 182, 212, 0.2)';
-                                        e.currentTarget.style.borderColor = 'rgba(6, 182, 212, 0.4)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.transform = 'translateY(0)';
-                                        e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.1)';
-                                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                                    }}
                                 >
                                     <div style={styles.blogPostHeader}>
                                         <h4 style={styles.blogPostTitle}>{post.title}</h4>
@@ -658,7 +722,6 @@ const Portfolio = () => {
                         </div>
                     </div>
 
-                    {/* Call to Action */}
                     <div style={styles.blogCTA}>
                         <h3 style={styles.blogCTATitle}>Want to Read More?</h3>
                         <p style={styles.blogCTADescription}>
@@ -669,14 +732,6 @@ const Portfolio = () => {
                             target="_blank" 
                             rel="noopener noreferrer"
                             style={styles.blogCTAButton}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'translateY(-3px) scale(1.05)';
-                                e.currentTarget.style.boxShadow = '0 15px 40px rgba(251, 146, 60, 0.4)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                                e.currentTarget.style.boxShadow = '0 8px 25px rgba(251, 146, 60, 0.3)';
-                            }}
                         >
                             <BookOpen size={20} />
                             <span>Follow on Medium</span>
@@ -686,7 +741,6 @@ const Portfolio = () => {
                 </div>
             </section>
 
-            {/* Projects Section */}
             <section id="projects" style={styles.projectsSection}>
                 <div style={styles.sectionContent}>
                     <h2 style={styles.sectionTitleCenter}>Project Portfolio</h2>
@@ -709,23 +763,32 @@ const Portfolio = () => {
                                     </div>
 
                                     <div style={styles.projectActions}>
-                                        <a 
-                                            href={project.githubUrl} 
-                                            target="_blank" 
-                                            rel="noopener noreferrer"
-                                            style={styles.projectActionPrimary}
-                                        >
-                                            <Github size={18} />
-                                            Source Code
-                                        </a>
-                                        {project.liveUrl && (
+                                        {!project.noGithub && (
                                             <a 
-                                                href={project.liveUrl} 
+                                                href={project.githubUrl} 
                                                 target="_blank" 
                                                 rel="noopener noreferrer"
-                                                style={styles.projectActionSecondary}
+                                                style={styles.projectActionPrimary}
                                             >
+                                                <Github size={18} />
+                                                {project.hasTwoLinks ? project.githubLabel1 : 'Source Code'}
                                             </a>
+                                        )}
+                                        {project.hasTwoLinks && (
+                                            <a 
+                                                href={project.githubUrl2} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                style={styles.projectActionPrimary}
+                                            >
+                                                <Github size={18} />
+                                                {project.githubLabel2}
+                                            </a>
+                                        )}
+                                        {project.noGithub && (
+                                            <div style={styles.projectPrivateLabel}>
+                                                📁 Works
+                                            </div>
                                         )}
                                     </div>
                                 </div>
@@ -735,7 +798,6 @@ const Portfolio = () => {
                 </div>
             </section>
 
-            {/* Skills Section */}
             <section id="skills" style={styles.skillsSection}>
                 <div style={styles.sectionContent}>
                     <h2 style={styles.sectionTitleCenter}>Technical Expertise</h2>
@@ -755,21 +817,10 @@ const Portfolio = () => {
                         ))}
                     </div>
 
-                    {/* Certifications */}
                     <div style={styles.certifications}>
                         <h3 style={styles.certificationsTitle}>Certifications</h3>
                         <div style={styles.certificationsGrid}>
-                            <div 
-                                style={styles.certificationCard1}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
-                                    e.currentTarget.style.boxShadow = '0 15px 35px rgba(66, 133, 244, 0.2)';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(66, 133, 244, 0.1)';
-                                }}
-                            >
+                            <div style={styles.certificationCard1}>
                                 <div style={styles.gcpLogo}>
                                     <span style={styles.gcpLogoText}>G</span>
                                     <span style={styles.gcpLogoCloud}>☁️</span>
@@ -777,34 +828,22 @@ const Portfolio = () => {
                                 </div>
                                 <div style={styles.certificationName}>Google Cloud Certified</div>
                                 <div style={styles.certificationDetails}>Cloud Digital Leader</div>
+                                <div style={styles.certificationValidity}>Valid: Jan 2023 - Jan 2026</div>
                             </div>
-                            <div 
-                                style={styles.certificationCard2}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
-                                    e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 69, 0, 0.2)';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(255, 69, 0, 0.1)';
-                                }}
-                            >
-                                <div style={styles.oracleLogo}>
-                                    <div style={styles.oracleLogoContainer}>
-                                        <span style={styles.oracleLogoO}>O</span>
-                                        <span style={styles.oracleLogoRacle}>RACLE</span>
-                                    </div>
-                                    <div style={styles.oracleCloudText}>CLOUD</div>
+                            <div style={styles.certificationCard2}>
+                                <div style={styles.awsLogo}>
+                                    <span style={styles.awsLogoText}>AWS</span>
+                                    <span style={styles.awsLogoCloud}>☁️</span>
                                 </div>
-                                <div style={styles.certificationName}>Oracle Cloud Infrastructure</div>
-                                <div style={styles.certificationDetails}>Certified Architect Associate</div>
+                                <div style={styles.certificationName}>AWS Certified</div>
+                                <div style={styles.certificationDetails}>Solutions Architect - Associate</div>
+                                <div style={styles.certificationInProgress}>🎯 In Progress</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Contact Section */}
             <section id="contact" style={styles.contactSection}>
                 <div style={styles.contactContent}>
                     <h2 style={styles.contactTitle}>Let's Build Something Amazing</h2>
@@ -818,25 +857,24 @@ const Portfolio = () => {
                             <div style={styles.contactLabel}>Email</div>
                             <div style={styles.contactValue}>burra.sa@northeastern.edu</div>
                         </a>
-                        <a href="https://www.linkedin.com/in/sai-kalyan-burra/" target='_blank' style={styles.contactCard}>
+                        <a href="https://www.linkedin.com/in/sai-kalyan-burra/" target='_blank' rel="noopener noreferrer" style={styles.contactCard}>
                             <Linkedin style={styles.contactIcon2} size={32} />
                             <div style={styles.contactLabel}>LinkedIn</div>
                             <div style={styles.contactValue}>Connect with me</div>
                         </a>
-                        <a href="https://github.com/Sai9700128" target='_blank' style={styles.contactCard}>
+                        <a href="https://github.com/Sai9700128" target='_blank' rel="noopener noreferrer" style={styles.contactCard}>
                             <Github style={styles.contactIcon3} size={32} />
                             <div style={styles.contactLabel}>Github</div>
                             <div style={styles.contactValue}>View my code</div>
                         </a>
                     </div>
 
-                    <div style={styles.location}>
-                        <p>📍 Boston, MA • (857) 339-8482</p>
+                    <div style={styles.locationInfo}>
+                        <p>📍 Brookline, MA • (857) 339-8482</p>
                     </div>
                 </div>
             </section>
 
-            {/* Footer */}
             <footer style={styles.footer}>
                 <div style={styles.footerContent}>
                     <p>&copy; 2025 Sai Kalyan Burra. Building the future with cloud technology.</p>
@@ -966,7 +1004,6 @@ const styles = {
         boxShadow: '0 0 8px #f59e0b',
         animation: 'sparkle 6s ease-in-out infinite 1s',
     },
-    // Floating Emoji Effects
     emojiFloat1: {
         position: 'absolute',
         top: '8%',
@@ -1028,17 +1065,6 @@ const styles = {
         left: '75%',
         fontSize: '1.5rem',
         animation: 'emojiEntrance 1s ease-out 3s both, emojiSpin 8s ease-in-out infinite 4s',
-        opacity: 0,
-        zIndex: 5,
-        userSelect: 'none',
-        pointerEvents: 'none',
-    },
-    emojiFloat7: {
-        position: 'absolute',
-        top: '30%',
-        right: '35%',
-        fontSize: '1.7rem',
-        animation: 'emojiEntrance 1s ease-out 3.5s both, emojiFloat 11s ease-in-out infinite 5s',
         opacity: 0,
         zIndex: 5,
         userSelect: 'none',
@@ -1126,9 +1152,6 @@ const styles = {
         gridTemplateColumns: '1fr 1fr',
         gap: '3rem',
         alignItems: 'center',
-        '@media (max-width: 1024px)': {
-            gridTemplateColumns: '1fr',
-        },
     },
     heroLeft: {
         transition: 'all 1s ease',
@@ -1154,9 +1177,6 @@ const styles = {
         fontWeight: 'bold',
         marginBottom: '1rem',
         lineHeight: '1.1',
-        '@media (max-width: 1024px)': {
-            fontSize: '3rem',
-        },
     },
     gradientText: {
         background: 'linear-gradient(to right, #06b6d4, #fb923c, #22c55e)',
@@ -1164,9 +1184,8 @@ const styles = {
         WebkitTextFillColor: 'transparent',
         backgroundClip: 'text',
     },
-    // Dynamic role styles
     roleContainer: {
-        height: '2rem', // Fixed height to prevent layout jumps
+        height: '2rem',
         marginBottom: '1.5rem',
         overflow: 'hidden',
         display: 'flex',
@@ -1185,7 +1204,7 @@ const styles = {
         WebkitTextFillColor: 'transparent',
         backgroundClip: 'text',
         fontWeight: '600',
-        minHeight: '1.5rem', // Ensure consistent height
+        minHeight: '1.5rem',
     },
     typingCursor: {
         color: '#06b6d4',
@@ -1217,9 +1236,6 @@ const styles = {
         gridTemplateColumns: 'repeat(4, 1fr)',
         gap: '1rem',
         marginBottom: '2rem',
-        '@media (max-width: 1024px)': {
-            gridTemplateColumns: 'repeat(2, 1fr)',
-        },
     },
     metricCard: {
         background: 'rgba(255, 255, 255, 0.08)',
@@ -1317,7 +1333,6 @@ const styles = {
         fontFamily: 'Monaco, "Cascadia Code", "Roboto Mono", monospace',
         fontSize: '0.875rem',
     },
-    // Profile Section Styles
     profileSection: {
         display: 'flex',
         alignItems: 'center',
@@ -1411,7 +1426,6 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
-
     },
     educationTitle: {
         fontSize: '2.5rem',
@@ -1514,6 +1528,83 @@ const styles = {
         border: '3px solid #0f1419',
         zIndex: 2,
     },
+    experienceSection: {
+        padding: '5rem 1.5rem',
+        background: 'rgba(15, 20, 25, 0.6)',
+        backdropFilter: 'blur(10px)',
+        position: 'relative',
+        zIndex: 1,
+    },
+    experienceCard: {
+        background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(251, 146, 60, 0.1))',
+        borderRadius: '1.5rem',
+        padding: '2.5rem',
+        border: '1px solid rgba(6, 182, 212, 0.3)',
+        backdropFilter: 'blur(12px)',
+        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+    },
+    experienceHeader: {
+        display: 'flex',
+        alignItems: 'flex-start',
+        gap: '1.5rem',
+        marginBottom: '2rem',
+    },
+    experienceIcon: {
+        background: 'linear-gradient(to right, #06b6d4, #fb923c)',
+        borderRadius: '0.75rem',
+        padding: '0.75rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexShrink: 0,
+    },
+    experienceInfo: {
+        flex: 1,
+    },
+    experienceCompany: {
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+        color: '#ffffff',
+        marginBottom: '0.5rem',
+    },
+    experienceRole: {
+        fontSize: '1.125rem',
+        color: '#06b6d4',
+        marginBottom: '0.75rem',
+    },
+    experienceMeta: {
+        display: 'flex',
+        gap: '2rem',
+        flexWrap: 'wrap',
+    },
+    experiencePeriod: {
+        fontSize: '0.875rem',
+        color: '#94a3b8',
+    },
+    experienceLocation: {
+        fontSize: '0.875rem',
+        color: '#94a3b8',
+    },
+    experienceHighlights: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
+    },
+    experienceHighlight: {
+        display: 'flex',
+        alignItems: 'flex-start',
+        gap: '1rem',
+        color: '#cbd5e1',
+        lineHeight: '1.6',
+    },
+    highlightDot: {
+        width: '8px',
+        height: '8px',
+        backgroundColor: '#06b6d4',
+        borderRadius: '50%',
+        marginTop: '0.5rem',
+        flexShrink: 0,
+    },
     featuredProject: {
         padding: '5rem 1.5rem',
         background: 'rgba(26, 35, 50, 0.4)',
@@ -1556,9 +1647,6 @@ const styles = {
         gridTemplateColumns: '1fr 1fr',
         gap: '2rem',
         alignItems: 'center',
-        '@media (max-width: 1024px)': {
-            gridTemplateColumns: '1fr',
-        },
     },
     projectHeader: {
         display: 'flex',
@@ -1607,6 +1695,11 @@ const styles = {
         backgroundColor: '#22c55e',
         borderRadius: '50%',
     },
+    featuredProjectButtons: {
+        display: 'flex',
+        gap: '1rem',
+        flexWrap: 'wrap',
+    },
     projectButton: {
         background: 'linear-gradient(to right, #06b6d4, #fb923c)',
         padding: '1rem 2rem',
@@ -1619,6 +1712,21 @@ const styles = {
         gap: '0.5rem',
         fontSize: '1.125rem',
         transition: 'transform 0.3s ease',
+    },
+    projectButtonSecondary: {
+        background: 'rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(4px)',
+        padding: '1rem 2rem',
+        borderRadius: '0.5rem',
+        fontWeight: '600',
+        color: 'white',
+        textDecoration: 'none',
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        fontSize: '1.125rem',
+        border: '1px solid rgba(6, 182, 212, 0.3)',
+        transition: 'all 0.3s ease',
     },
     terminalDemo: {
         background: 'rgba(0, 0, 0, 0.6)',
@@ -1654,7 +1762,6 @@ const styles = {
         marginLeft: '1rem',
         marginBottom: '0.25rem',
     },
-    // Blog Section Styles
     blogSection: {
         padding: '5rem 1.5rem',
         background: 'rgba(15, 20, 25, 0.6)',
@@ -1666,9 +1773,6 @@ const styles = {
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
         gap: '3rem',
-        '@media (max-width: 1024px)': {
-            gridTemplateColumns: '1fr',
-        },
     },
     featuredBlogCard: {
         background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(251, 146, 60, 0.1))',
@@ -1887,9 +1991,6 @@ const styles = {
         display: 'grid',
         gridTemplateColumns: '2fr 1fr',
         gap: '2rem',
-        '@media (max-width: 1024px)': {
-            gridTemplateColumns: '1fr',
-        },
     },
     projectInfo: {
         flex: 1,
@@ -1943,20 +2044,15 @@ const styles = {
         gap: '0.5rem',
         boxShadow: '0 4px 15px rgba(6, 182, 212, 0.3)',
     },
-    projectActionSecondary: {
-        border: '1px solid rgba(255, 255, 255, 0.3)',
-        background: 'rgba(255, 255, 255, 0.05)',
+    projectPrivateLabel: {
+        background: 'rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(4px)',
         padding: '0.75rem 1.5rem',
         borderRadius: '0.5rem',
         fontWeight: '600',
-        color: 'white',
-        textDecoration: 'none',
+        color: '#94a3b8',
         textAlign: 'center',
-        transition: 'all 0.3s ease',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '0.5rem',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
     },
     skillsSection: {
         padding: '5rem 1.5rem',
@@ -1970,9 +2066,6 @@ const styles = {
         gridTemplateColumns: '1fr 1fr',
         gap: '2rem',
         marginBottom: '3rem',
-        '@media (max-width: 1024px)': {
-            gridTemplateColumns: '1fr',
-        },
     },
     skillCard: {
         background: 'rgba(255, 255, 255, 0.05)',
@@ -2029,16 +2122,15 @@ const styles = {
         cursor: 'pointer',
     },
     certificationCard2: {
-        background: 'linear-gradient(135deg, rgba(255, 69, 0, 0.15), rgba(255, 140, 0, 0.15))',
+        background: 'linear-gradient(135deg, rgba(255, 153, 0, 0.15), rgba(255, 153, 0, 0.1))',
         padding: '2rem',
         borderRadius: '1rem',
-        border: '1px solid rgba(255, 69, 0, 0.3)',
+        border: '1px solid rgba(255, 153, 0, 0.3)',
         textAlign: 'center',
-        boxShadow: '0 8px 25px rgba(255, 69, 0, 0.1)',
+        boxShadow: '0 8px 25px rgba(255, 153, 0, 0.1)',
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         cursor: 'pointer',
     },
-    // GCP Logo Styling
     gcpLogo: {
         display: 'flex',
         alignItems: 'center',
@@ -2064,35 +2156,23 @@ const styles = {
         fontSize: '1.8rem',
         fontWeight: '700',
     },
-    // Oracle Logo Styling
-    oracleLogo: {
-        marginBottom: '1rem',
-        fontFamily: 'Arial, sans-serif',
-    },
-    oracleLogoContainer: {
+    awsLogo: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: '0.25rem',
-    },
-    oracleLogoO: {
-        color: '#ff4500',
-        fontSize: '2rem',
+        marginBottom: '1rem',
+        fontSize: '1.5rem',
         fontWeight: 'bold',
-        textShadow: '0 2px 4px rgba(255, 69, 0, 0.3)',
     },
-    oracleLogoRacle: {
-        color: '#ff6b35',
+    awsLogoText: {
+        color: '#ff9900',
+        fontFamily: 'Amazon Ember, sans-serif',
+        fontSize: '1.8rem',
+        fontWeight: '700',
+    },
+    awsLogoCloud: {
+        margin: '0 0.25rem',
         fontSize: '1.2rem',
-        fontWeight: 'bold',
-        letterSpacing: '1px',
-        marginLeft: '0.1rem',
-    },
-    oracleCloudText: {
-        color: '#ff8c00',
-        fontSize: '0.9rem',
-        fontWeight: '600',
-        letterSpacing: '2px',
     },
     certificationName: {
         fontWeight: '600',
@@ -2101,6 +2181,17 @@ const styles = {
     certificationDetails: {
         fontSize: '0.875rem',
         color: '#94a3b8',
+        marginBottom: '0.5rem',
+    },
+    certificationValidity: {
+        fontSize: '0.75rem',
+        color: '#64748b',
+        fontStyle: 'italic',
+    },
+    certificationInProgress: {
+        fontSize: '0.75rem',
+        color: '#fb923c',
+        fontWeight: '600',
     },
     contactSection: {
         padding: '5rem 1.5rem',
@@ -2131,9 +2222,6 @@ const styles = {
         gridTemplateColumns: 'repeat(3, 1fr)',
         gap: '1.5rem',
         marginBottom: '2rem',
-        '@media (max-width: 1024px)': {
-            gridTemplateColumns: '1fr',
-        },
     },
     contactCard: {
         background: 'rgba(255, 255, 255, 0.1)',
@@ -2163,6 +2251,10 @@ const styles = {
         marginBottom: '0.25rem',
     },
     contactValue: {
+        fontSize: '0.875rem',
+        color: '#94a3b8',
+    },
+    locationInfo: {
         fontSize: '0.875rem',
         color: '#94a3b8',
     },
