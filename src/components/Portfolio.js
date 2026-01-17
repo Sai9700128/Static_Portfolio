@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Terminal, Award, Underline, BookOpen, Edit3, Calendar, ArrowRight } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Terminal, Award, Underline, BookOpen, Edit3, Calendar, ArrowRight, Briefcase } from 'lucide-react';
 import myprofilePic from '../assets/mypicture.png';
 
 const Portfolio = () => {
@@ -15,7 +15,7 @@ const Portfolio = () => {
         "Multi-Cloud Infrastructure Architect",
         "Site Reliability Engineering Enthusiast",
         "Infrastructure Automation Engineer",
-        "Published Technical Writer"
+        "Open Source Contributor"
     ];
 
     const terminalCommands = [
@@ -23,25 +23,23 @@ const Portfolio = () => {
         'sai-kalyan-burra',
         'Cloud Engineer | MS @ Northeastern',
         '',
-        '$ cat philosophy.txt',
-        '"If I\'m going to do something repetitive,',
-        'I should automate it."',
+        '$ cat achievements.txt',
+        '→ 97% faster deployments via GitOps',
+        '→ 70% faster incident detection',
+        '→ 80% reduced attack surface',
+        '→ 1,000+ GitHub contributions',
         '',
-        '$ tech_stack',
-        '☁️  Multi-cloud: AWS • Azure • GCP',
-        '🔧 DevOps: Terraform • Packer • K8s • Docker',
-        '💻 Code: Python • Java • Spring Boot',
+        '$ tech_stack --current',
+        '☁️  Cloud: AWS • GCP',
+        '🔧 IaC: Terraform • Helm • ArgoCD',
+        '🐳 Containers: Kubernetes • Docker • Istio',
+        '🔐 Security: Vault • OPA • Trivy',
+        '📊 Observability: Prometheus • Grafana • Loki',
+        '💻 Code: Python • Bash • TypeScript • Java',
         '',
-        '$ current_work',
-        '→ Building automated DR system (AWS→Azure)',
-        '→ Writing about cloud on Medium',
-        '→ Pursuing AWS Solutions Architect cert',
-        '',
-        '$ ls achievements/',
+        '$ ls certifications/',
         'google-cloud-digital-leader.cert',
-        '5-published-articles.md',
-        'multi-cloud-dr-system/',
-        'spring-boot-packer-deployment/',
+        'aws-solutions-architect.in-progress',
         '',
         '$ ./connect',
         '📧 burra.sa@northeastern.edu',
@@ -149,59 +147,120 @@ const Portfolio = () => {
     }, []);
 
     const skills = {
-        "Cloud Platforms": ["AWS (EC2, Lambda, EKS, RDS, S3, CloudWatch, Route 53, IAM, Step Functions)", "Azure (VMs, AKS, Azure SQL, VNet)", "GCP (Compute Engine, Cloud SQL, Cloud Storage)"],
-        "DevOps & Infrastructure": ["Terraform (IaC)", "Packer (Image Building)", "Docker", "Kubernetes (EKS/AKS)", "CI/CD (GitHub Actions, ArgoCD)", "Linux administration"],
-        "Programming": ["Python (automation, scripting)", "Java (Spring Boot, REST APIs)", "JavaScript (Node.js)", "Dart (Flutter)", "Bash"],
-        "Databases": ["MySQL", "RDS", "Azure SQL Database", "Cloud SQL", "Database replication strategies"]
+        "Cloud Platforms": ["AWS (EC2, VPC, S3, RDS, IAM, EKS, ECR, Lambda, CloudWatch, Route 53)", "GCP (Compute Engine, Cloud SQL)"],
+        "DevOps & IaC": ["Terraform", "Docker", "Kubernetes", "Helm", "ArgoCD", "GitHub Actions", "GitOps", "Linux", "CI/CD Pipelines"],
+        "Orchestration & Service Mesh": ["Kubernetes (EKS)", "Istio", "mTLS", "Traffic Management", "Resource Optimization"],
+        "Security": ["HashiCorp Vault", "OPA Gatekeeper", "Network Policies", "Trivy", "Container Scanning"],
+        "Observability": ["Prometheus", "Grafana", "Loki", "CloudWatch", "Kubecost", "Alerting"],
+        "Programming & Databases": ["Python", "Bash", "JavaScript", "TypeScript", "Java", "MySQL", "AWS RDS", "GCP Cloud SQL"]
     };
 
     const projects = [
         {
-            title: "Enterprise Multi-Cloud Disaster Recovery System",
-            subtitle: "Automated Failover Between AWS and Azure",
-            period: "October 2025 - Present",
-            tech: "AWS • Azure • Terraform • Kubernetes • Docker • GitHub Actions • Python",
+            title: "TaskFlow — Cloud-Native Microservices Platform",
+            subtitle: "Production-Grade Kubernetes Platform with GitOps & Zero-Trust Security",
+            period: "December 2025 - Present",
+            tech: "AWS EKS • Terraform • ArgoCD • Helm • GitHub Actions • Prometheus • Grafana • Istio • Vault • OPA Gatekeeper",
             highlights: [
-                "🏗️ Architecting automated disaster recovery with AWS primary and Azure secondary using warm standby strategy, targeting 5-minute RPO and 15-minute RTO",
-                "🔗 Building secure cross-cloud infrastructure with site-to-site VPN connectivity between AWS VPC and Azure VNet using Terraform IaC",
-                "🚀 Developing dual-cloud CI/CD pipeline with GitHub Actions deploying containerized microservices to both AWS EKS and Azure AKS simultaneously",
-                "⚡ Implementing automated failover orchestration using AWS Step Functions and Lambda with real-time database replication from RDS MySQL to Azure SQL Database"
+                "🚀 Reduced deployment time from 2+ hours to 5 minutes by implementing CI/CD pipeline with GitHub Actions and GitOps-based continuous deployment using ArgoCD",
+                "🏗️ Provisioned production AWS infrastructure (EKS, RDS, ECR, VPC) using Terraform IaC, achieving 100% reproducible deployments and 15-minute environment setup time",
+                "🔐 Implemented zero-trust security using Network Policies, Istio mTLS encryption, and OPA Gatekeeper policy enforcement, reducing attack surface by 80%",
+                "🔑 Eliminated hardcoded credentials by integrating HashiCorp Vault for dynamic secrets injection with automatic rotation and zero-downtime credential updates",
+                "📊 Reduced mean time to detection by 70% using Prometheus metrics, Grafana dashboards, and Loki centralized logging with proactive alerting"
             ],
-            githubUrl: "#",
+            githubUrl: "https://github.com/Sai9700128/gitops_app_Taskflow",
+            githubUrl2: "https://github.com/Sai9700128/gitops-config",
+            githubLabel1: "Repo 1",
+            githubLabel2: "Repo 2",
+            hasTwoLinks: true,
         },
         {
-            title: "Cloud-Native Web Application with Spring Boot",
-            subtitle: "Multi-Cloud Deployment with Packer & Terraform",
+            title: "Open Source Contributor — OpsiMate",
+            subtitle: "DevOps Monitoring Platform — Active Contributor",
+            period: "January 2026",
+            tech: "Terraform • Helm • Kubernetes • AWS EKS • EC2 • GitHub Actions • CI/CD",
+            highlights: [
+                "🔧 Developed Terraform infrastructure modules for automated test environment provisioning, including lightweight Kubernetes cluster and EC2 instances with integrated monitoring",
+                "📦 Created production-ready Helm charts for Kubernetes deployment, including deployments, services, ConfigMaps, secrets management, and persistent volume configurations",
+                "⚡ Built GitHub Actions CI/CD workflows for Helm chart validation and Terraform testing, enabling one-command environment setup that reduced provisioning time from hours to minutes"
+            ],
+            githubUrl: "https://github.com/OpsiMate/OpsiMate",
+        },
+        {
+            title: "Multi-Region Disaster Recovery on AWS",
+            subtitle: "Active-Passive DR Solution with Automated Failover",
+            period: "September - October 2025",
+            tech: "Terraform • AWS (EC2, RDS, S3, Route 53, Lambda, CloudWatch) • GitHub Actions • Bash",
+            highlights: [
+                "🌐 Architected active-passive disaster recovery solution across 2 AWS regions (us-east-1, us-west-2), configuring warm standby infrastructure targeting 5-minute RPO and 15-minute RTO",
+                "🏗️ Automated infrastructure provisioning using Terraform modules for VPCs, subnets, EC2 instances, RDS MySQL databases, and S3 buckets with versioning across both regions",
+                "🔄 Implemented Route 53 health checks with failover routing, RDS cross-region read replicas, and S3 cross-region replication for automated failover and data redundancy"
+            ],
+            githubUrl: "https://github.com/Sai9700128/Multi-Region-DR",
+        },
+        {
+            title: "Multi-Cloud Data Transfer with AWS and GCP",
+            subtitle: "Automated Data Pipeline for Multi-Cloud Architecture",
+            period: "September 2025",
+            tech: "Google Cloud Platform (GCP) • Google Cloud Storage • Storage Transfer Service • Identity Federation • AWS S3",
+            highlights: [
+                "☁️ Built an automated data transfer pipeline between AWS S3 and Google Cloud Storage to demonstrate multi-cloud architecture capabilities",
+                "🔄 Implemented disaster recovery strategies leveraging cross-cloud data replication",
+                "🔐 Configured Identity Federation for secure cross-cloud authentication and access management"
+            ],
+            noGithub: true,
+        },
+        {
+            title: "Cloud-Native Application — WebApp",
+            subtitle: "Production AWS Infrastructure with Terraform & Packer",
             period: "January - April 2025",
-            tech: "Spring Boot • MySQL • AWS • GCP • Terraform • Packer • Docker • GitHub Actions",
+            tech: "Terraform • AWS • Packer • GitHub Actions • Amazon CloudWatch • GCP",
             highlights: [
-                "🖼️ Built custom machine images using Packer for both AWS (AMI) and GCP (Compute Engine) enabling consistent application deployments",
-                "⚙️ Automated 3-tier infrastructure provisioning across AWS and GCP using Terraform modules, reducing deployment from 60+ manual steps to single workflow",
-                "🔌 Developed RESTful API backend with Spring Boot microservices integrating AWS RDS MySQL and GCP Cloud SQL with connection pooling and query optimization",
-                "🔄 Implemented CI/CD pipeline with GitHub Actions for automated testing, Packer image building, and parallel deployment to both clouds"
+                "🏗️ Architected AWS infrastructure supporting 5,000+ concurrent users with 99% uptime",
+                "⚡ Automated AMI builds with Packer reducing deployment time by 40% (45min to 27min)",
+                "💰 Configured S3 encryption and lifecycle policies managing 500GB+ data with 30% cost reduction",
+                "♻️ Refactored Terraform modules reducing infrastructure code duplication by 60% across environments"
             ],
-            githubUrl: "https://github.com/Sai9700128/Webapp.git",
+            githubUrl: "https://github.com/Sai9700128/Webapp",
+            githubUrl2: "https://github.com/Sai9700128/tf-aws-infra",
+            githubLabel1: "App Repo",
+            githubLabel2: "Infra Repo",
+            hasTwoLinks: true,
         },
         {
-            title: "Containerized Portfolio Website",
-            subtitle: "Docker Deployment on AWS Elastic Beanstalk",
-            period: "July - August 2025", 
-            tech: "Docker • React • AWS Elastic Beanstalk • IAM • CloudFormation",
+            title: "Roomies Radar",
+            subtitle: "Roommate & Rental Accommodation Matching Platform",
+            period: "October - December 2024",
+            tech: "Domain-Driven Design (DDD) • JWT Authentication • Progressive Web App (PWA)",
             highlights: [
-                "🐳 Multi-stage Docker containerization with optimized image layers for faster builds",
-                "☁️ Deployed on AWS Elastic Beanstalk with auto-scaling capabilities and health monitoring",
-                "🔐 Implemented IAM service roles and instance profiles following AWS security best practices",
-                "📊 Integrated CloudWatch for container monitoring and performance tracking"
+                "🏠 Developed a comprehensive platform to connect individuals looking for compatible roommates and rental accommodations using Domain-Driven Design (DDD) principles",
+                "🔐 Implemented secure user authentication with JWT-based registration and login",
+                "🎯 Built sophisticated roommate matching based on preferences like gender, food habits, and room type",
+                "📱 Created Progressive Web App (PWA) ensuring accessibility and performance across all devices"
             ],
-            githubUrl: "https://github.com/Sai9700128/Static_Portfolio",
+            noGithub: true,
         }
     ];
 
+    const experience = {
+        company: "Built-in Tech (Start-up)",
+        role: "Software Engineer Intern — Mobile Development & AWS Infrastructure",
+        period: "February 2023 - July 2023",
+        location: "Hyderabad, India",
+        highlights: [
+            "Built cross-platform mobile application using Flutter and Dart, integrating Firebase services (Authentication, Cloud Firestore, Cloud Storage) to enable real-time data synchronization for 200+ property listings",
+            "Configured AWS Organizations for multi-account structure and implemented CloudWatch billing alarms, reducing unplanned cloud spend by 20%",
+            "Implemented S3 bucket policies with server-side encryption (SSE-S3), versioning, and lifecycle rules to automate storage tiering and enforce data security compliance",
+            "Deployed production website using S3 static hosting and CloudFront CDN, reducing page load times by 60% and cutting hosting costs by 40% versus EC2-based hosting"
+        ]
+    };
+
+    // Updated achievements to match resume metrics
     const achievements = [
-        { metric: "3", label: "Cloud Platforms" },
-        { metric: "5+", label: "Published Articles" },
-        { metric: "2", label: "Active Projects" },
-        { metric: "1", label: "Google Cert" }
+        { metric: "97%", label: "Faster Deployments" },
+        { metric: "70%", label: "Faster Detection" },
+        { metric: "80%", label: "Reduced Attack Surface" },
+        { metric: "1,000+", label: "GitHub Contributions" }
     ];
 
     return (
@@ -352,6 +411,7 @@ const Portfolio = () => {
                 <div style={styles.navContent}>
                     <div style={styles.logo}>&lt;Sai/Kalyan&gt;</div>
                     <div style={styles.navLinks}>
+                        <a href="#experience" style={styles.navLink}>Experience</a>
                         <a href="#projects" style={styles.navLink}>Projects</a>
                         <a href="#blog" style={styles.navLink}>Blog</a>
                         <a href="#skills" style={styles.navLink}>Skills</a>
@@ -385,10 +445,12 @@ const Portfolio = () => {
                         </div>
                         
                         <p style={styles.heroDescription}>
-                            Building automated multi-cloud disaster recovery systems that fail over in{' '}
-                            <span style={styles.highlight1}>under 15 minutes</span>. Creating infrastructure-as-code with{' '}
-                            <span style={styles.highlight2}>Terraform and Packer</span> that deploys to{' '}
-                            <span style={styles.highlight3}>AWS, Azure, and GCP</span>. Documenting everything I learn on Medium.
+                            Cloud Engineer with proven results:{' '}
+                            <span style={styles.highlight1}>97% faster deployments</span> via GitOps,{' '}
+                            <span style={styles.highlight2}>70% faster incident detection</span> through Prometheus/Grafana observability, and{' '}
+                            <span style={styles.highlight3}>80% reduced attack surface</span> using zero-trust security. 
+                            Hands-on expertise in AWS, Terraform, Kubernetes, and CI/CD automation. 
+                            Active open source contributor with <span style={styles.highlight1}>1,000+ GitHub contributions</span>.
                         </p>
 
                         <div style={styles.metrics}>
@@ -492,11 +554,45 @@ const Portfolio = () => {
                 </div>
             </section>
 
+            {/* Experience Section */}
+            <section id="experience" style={styles.experienceSection}>
+                <div style={styles.sectionContent}>
+                    <div style={styles.sectionHeader}>
+                        <h2 style={styles.sectionTitle}>Professional Experience</h2>
+                        <p style={styles.sectionSubtitle}>Building scalable solutions in the cloud</p>
+                    </div>
+
+                    <div style={styles.experienceCard}>
+                        <div style={styles.experienceHeader}>
+                            <div style={styles.experienceIcon}>
+                                <Briefcase size={24} />
+                            </div>
+                            <div style={styles.experienceInfo}>
+                                <h3 style={styles.experienceCompany}>{experience.company}</h3>
+                                <p style={styles.experienceRole}>{experience.role}</p>
+                                <div style={styles.experienceMeta}>
+                                    <span style={styles.experiencePeriod}>{experience.period}</span>
+                                    <span style={styles.experienceLocation}>📍 {experience.location}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style={styles.experienceHighlights}>
+                            {experience.highlights.map((highlight, index) => (
+                                <div key={index} style={styles.experienceHighlight}>
+                                    <div style={styles.highlightDot}></div>
+                                    <span>{highlight}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section style={styles.featuredProject}>
                 <div style={styles.sectionContent}>
                     <div style={styles.sectionHeader}>
                         <h2 style={styles.sectionTitle}>Featured Project</h2>
-                        <p style={styles.sectionSubtitle}>My Interactive Terminal Website - Built with React</p>
+                        <p style={styles.sectionSubtitle}>TaskFlow — Production-Grade Kubernetes Platform</p>
                     </div>
 
                     <div style={styles.projectCard}>
@@ -504,45 +600,56 @@ const Portfolio = () => {
                             <div>
                                 <div style={styles.projectHeader}>
                                     <Terminal style={styles.terminalIcon} size={32} />
-                                    <h3 style={styles.projectTitle}>Terminal-based Portfolio</h3>
+                                    <h3 style={styles.projectTitle}>TaskFlow</h3>
                                 </div>
                                 <p style={styles.projectDescription}>
-                                    An interactive terminal-based portfolio showcasing technical skills through a unique command-line interface.
-                                    Built with React and deployed on Vercel.
+                                    A cloud-native microservices platform featuring GitOps deployment, zero-trust security, 
+                                    and comprehensive observability. Achieved 97% faster deployments and 70% faster incident detection.
                                 </p>
 
                                 <div style={styles.projectFeatures}>
                                     <div style={styles.feature}>
                                         <div style={styles.featureDot1}></div>
-                                        <span>Interactive command-line interface</span>
+                                        <span>GitOps with ArgoCD & GitHub Actions</span>
                                     </div>
                                     <div style={styles.feature}>
                                         <div style={styles.featureDot2}></div>
-                                        <span>Dynamic typing animations</span>
+                                        <span>Zero-trust: Istio mTLS + OPA Gatekeeper</span>
                                     </div>
                                     <div style={styles.feature}>
                                         <div style={styles.featureDot3}></div>
-                                        <span>Fully responsive design</span>
+                                        <span>Observability: Prometheus + Grafana + Loki</span>
+                                    </div>
+                                    <div style={styles.feature}>
+                                        <div style={styles.featureDot1}></div>
+                                        <span>Secrets: HashiCorp Vault dynamic injection</span>
                                     </div>
                                 </div>
 
-                                <a href="https://saikalyanbterminalportfolio.vercel.app" target="_blank" rel="noopener noreferrer" style={styles.projectButton}>
-                                    <ExternalLink size={20} />
-                                    Experience the Terminal
-                                </a>
+                                <div style={styles.featuredProjectButtons}>
+                                    <a href="https://github.com/Sai9700128/gitops_app_Taskflow" target="_blank" rel="noopener noreferrer" style={styles.projectButton}>
+                                        <Github size={20} />
+                                        Repo 1
+                                    </a>
+                                    <a href="https://github.com/Sai9700128/gitops-config" target="_blank" rel="noopener noreferrer" style={styles.projectButtonSecondary}>
+                                        <Github size={20} />
+                                        Repo 2
+                                    </a>
+                                </div>
                             </div>
 
                             <div style={styles.terminalDemo}>
                                 <div style={styles.terminalDemoHeader}>
-                                    <span style={styles.terminalDemoTitle}>~ Welcome to Terminal Portfolio ~</span>
+                                    <span style={styles.terminalDemoTitle}>~ TaskFlow Deployment Pipeline ~</span>
                                 </div>
                                 <div style={styles.terminalDemoBody}>
-                                    <div style={styles.helpCommand}>$ help</div>
-                                    <div style={styles.helpText}>Available commands:</div>
-                                    <div style={styles.helpItem}>ls about    - Learn about me</div>
-                                    <div style={styles.helpItem}>ls projects - View my projects</div>
-                                    <div style={styles.helpItem}>ls skills   - Technical expertise</div>
-                                    <div style={styles.helpItem}>ls contact  - Get in touch</div>
+                                    <div style={styles.helpCommand}>$ kubectl get deployments -n taskflow</div>
+                                    <div style={styles.helpText}>NAME              READY   STATUS</div>
+                                    <div style={styles.helpItem}>api-gateway       3/3     Running</div>
+                                    <div style={styles.helpItem}>task-service      3/3     Running</div>
+                                    <div style={styles.helpItem}>user-service      3/3     Running</div>
+                                    <div style={styles.helpCommand}>$ argocd app sync taskflow</div>
+                                    <div style={styles.helpItem}>✓ Synced (Healthy)</div>
                                     <div style={styles.helpCommand}>$ █</div>
                                 </div>
                             </div>
@@ -684,15 +791,33 @@ const Portfolio = () => {
                                     </div>
 
                                     <div style={styles.projectActions}>
-                                        <a 
-                                            href={project.githubUrl} 
-                                            target="_blank" 
-                                            rel="noopener noreferrer"
-                                            style={styles.projectActionPrimary}
-                                        >
-                                            <Github size={18} />
-                                            Source Code
-                                        </a>
+                                        {!project.noGithub && (
+                                            <a 
+                                                href={project.githubUrl} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                style={styles.projectActionPrimary}
+                                            >
+                                                <Github size={18} />
+                                                {project.hasTwoLinks ? project.githubLabel1 : 'Source Code'}
+                                            </a>
+                                        )}
+                                        {project.hasTwoLinks && (
+                                            <a 
+                                                href={project.githubUrl2} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                style={styles.projectActionPrimary}
+                                            >
+                                                <Github size={18} />
+                                                {project.githubLabel2}
+                                            </a>
+                                        )}
+                                        {project.noGithub && (
+                                            <div style={styles.projectPrivateLabel}>
+                                                🔒 Private Project
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -743,6 +868,25 @@ const Portfolio = () => {
                                 <div style={styles.certificationDetails}>Cloud Digital Leader</div>
                                 <div style={styles.certificationValidity}>Valid: Jan 2023 - Jan 2026</div>
                             </div>
+                            <div 
+                                style={styles.certificationCard2}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
+                                    e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 153, 0, 0.2)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(255, 153, 0, 0.1)';
+                                }}
+                            >
+                                <div style={styles.awsLogo}>
+                                    <span style={styles.awsLogoText}>AWS</span>
+                                    <span style={styles.awsLogoCloud}>☁️</span>
+                                </div>
+                                <div style={styles.certificationName}>AWS Certified</div>
+                                <div style={styles.certificationDetails}>Solutions Architect - Associate</div>
+                                <div style={styles.certificationInProgress}>🎯 In Progress</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -773,8 +917,8 @@ const Portfolio = () => {
                         </a>
                     </div>
 
-                    <div style={styles.location}>
-                        <p>📍 Boston, MA • (857) 339-8482</p>
+                    <div style={styles.locationInfo}>
+                        <p>📍 Brookline, MA • (857) 339-8482</p>
                     </div>
                 </div>
             </section>
@@ -1432,6 +1576,84 @@ const styles = {
         border: '3px solid #0f1419',
         zIndex: 2,
     },
+    // Experience Section Styles
+    experienceSection: {
+        padding: '5rem 1.5rem',
+        background: 'rgba(15, 20, 25, 0.6)',
+        backdropFilter: 'blur(10px)',
+        position: 'relative',
+        zIndex: 1,
+    },
+    experienceCard: {
+        background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(251, 146, 60, 0.1))',
+        borderRadius: '1.5rem',
+        padding: '2.5rem',
+        border: '1px solid rgba(6, 182, 212, 0.3)',
+        backdropFilter: 'blur(12px)',
+        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+    },
+    experienceHeader: {
+        display: 'flex',
+        alignItems: 'flex-start',
+        gap: '1.5rem',
+        marginBottom: '2rem',
+    },
+    experienceIcon: {
+        background: 'linear-gradient(to right, #06b6d4, #fb923c)',
+        borderRadius: '0.75rem',
+        padding: '0.75rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexShrink: 0,
+    },
+    experienceInfo: {
+        flex: 1,
+    },
+    experienceCompany: {
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+        color: '#ffffff',
+        marginBottom: '0.5rem',
+    },
+    experienceRole: {
+        fontSize: '1.125rem',
+        color: '#06b6d4',
+        marginBottom: '0.75rem',
+    },
+    experienceMeta: {
+        display: 'flex',
+        gap: '2rem',
+        flexWrap: 'wrap',
+    },
+    experiencePeriod: {
+        fontSize: '0.875rem',
+        color: '#94a3b8',
+    },
+    experienceLocation: {
+        fontSize: '0.875rem',
+        color: '#94a3b8',
+    },
+    experienceHighlights: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
+    },
+    experienceHighlight: {
+        display: 'flex',
+        alignItems: 'flex-start',
+        gap: '1rem',
+        color: '#cbd5e1',
+        lineHeight: '1.6',
+    },
+    highlightDot: {
+        width: '8px',
+        height: '8px',
+        backgroundColor: '#06b6d4',
+        borderRadius: '50%',
+        marginTop: '0.5rem',
+        flexShrink: 0,
+    },
     featuredProject: {
         padding: '5rem 1.5rem',
         background: 'rgba(26, 35, 50, 0.4)',
@@ -1522,6 +1744,11 @@ const styles = {
         backgroundColor: '#22c55e',
         borderRadius: '50%',
     },
+    featuredProjectButtons: {
+        display: 'flex',
+        gap: '1rem',
+        flexWrap: 'wrap',
+    },
     projectButton: {
         background: 'linear-gradient(to right, #06b6d4, #fb923c)',
         padding: '1rem 2rem',
@@ -1534,6 +1761,21 @@ const styles = {
         gap: '0.5rem',
         fontSize: '1.125rem',
         transition: 'transform 0.3s ease',
+    },
+    projectButtonSecondary: {
+        background: 'rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(4px)',
+        padding: '1rem 2rem',
+        borderRadius: '0.5rem',
+        fontWeight: '600',
+        color: 'white',
+        textDecoration: 'none',
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        fontSize: '1.125rem',
+        border: '1px solid rgba(6, 182, 212, 0.3)',
+        transition: 'all 0.3s ease',
     },
     terminalDemo: {
         background: 'rgba(0, 0, 0, 0.6)',
@@ -1851,6 +2093,16 @@ const styles = {
         gap: '0.5rem',
         boxShadow: '0 4px 15px rgba(6, 182, 212, 0.3)',
     },
+    projectPrivateLabel: {
+        background: 'rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(4px)',
+        padding: '0.75rem 1.5rem',
+        borderRadius: '0.5rem',
+        fontWeight: '600',
+        color: '#94a3b8',
+        textAlign: 'center',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
+    },
     skillsSection: {
         padding: '5rem 1.5rem',
         background: 'rgba(45, 74, 92, 0.3)',
@@ -1918,6 +2170,16 @@ const styles = {
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         cursor: 'pointer',
     },
+    certificationCard2: {
+        background: 'linear-gradient(135deg, rgba(255, 153, 0, 0.15), rgba(255, 153, 0, 0.1))',
+        padding: '2rem',
+        borderRadius: '1rem',
+        border: '1px solid rgba(255, 153, 0, 0.3)',
+        textAlign: 'center',
+        boxShadow: '0 8px 25px rgba(255, 153, 0, 0.1)',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        cursor: 'pointer',
+    },
     gcpLogo: {
         display: 'flex',
         alignItems: 'center',
@@ -1943,6 +2205,24 @@ const styles = {
         fontSize: '1.8rem',
         fontWeight: '700',
     },
+    awsLogo: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: '1rem',
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+    },
+    awsLogoText: {
+        color: '#ff9900',
+        fontFamily: 'Amazon Ember, sans-serif',
+        fontSize: '1.8rem',
+        fontWeight: '700',
+    },
+    awsLogoCloud: {
+        margin: '0 0.25rem',
+        fontSize: '1.2rem',
+    },
     certificationName: {
         fontWeight: '600',
         marginBottom: '0.25rem',
@@ -1956,6 +2236,11 @@ const styles = {
         fontSize: '0.75rem',
         color: '#64748b',
         fontStyle: 'italic',
+    },
+    certificationInProgress: {
+        fontSize: '0.75rem',
+        color: '#fb923c',
+        fontWeight: '600',
     },
     contactSection: {
         padding: '5rem 1.5rem',
@@ -2015,6 +2300,10 @@ const styles = {
         marginBottom: '0.25rem',
     },
     contactValue: {
+        fontSize: '0.875rem',
+        color: '#94a3b8',
+    },
+    locationInfo: {
         fontSize: '0.875rem',
         color: '#94a3b8',
     },
