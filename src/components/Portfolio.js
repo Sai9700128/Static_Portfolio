@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Terminal, BookOpen, Edit3, Calendar, ArrowRight, Briefcase } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Terminal, BookOpen, ArrowRight, Briefcase } from 'lucide-react';
 import myprofilePic from '../assets/mypicture.png';
 
 const Portfolio = () => {
