@@ -1,143 +1,128 @@
-# 🚀 Sai Kalyan Burra - Cloud Engineer & DevOps Specialist
+# Sai Kalyan Burra — Cloud & DevOps Engineer
 
-![Portfolio Status](https://img.shields.io/badge/Portfolio-Live-brightgreen?style=for-the-badge&logo=vercel)
-![Availability](https://img.shields.io/badge/Available-For%20Hire-success?style=for-the-badge&logo=handshake)
+![Portfolio](https://img.shields.io/badge/Portfolio-Live-brightgreen?style=for-the-badge&logo=vercel)
+![Available](https://img.shields.io/badge/Available-For%20Hire-success?style=for-the-badge&logo=handshake)
 ![Location](https://img.shields.io/badge/Location-Boston%2C%20MA-blue?style=for-the-badge&logo=googlemaps)
-![Experience](https://img.shields.io/badge/Experience-Cloud%20Engineer-orange?style=for-the-badge&logo=amazonwebservices)
 
-<!-- ![Uptime](https://img.shields.io/badge/Uptime-99.5%25-brightgreen?style=flat-square&logo=statuspage) -->
-![Performance](https://img.shields.io/badge/Response%20Time-50ms-brightgreen?style=flat-square&logo=speedtest)
-![Deployment](https://img.shields.io/badge/Deployment%20Reduction-85%25-orange?style=flat-square&logo=githubactions)
-![Concurrent Users](https://img.shields.io/badge/Concurrent%20Users-10K%2B-blue?style=flat-square&logo=users)
-
-![AWS](https://img.shields.io/badge/AWS-Expert-FF9900?style=flat-square&logo=amazon-aws&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-FF9900?style=flat-square&logo=amazon-aws&logoColor=white)
 ![GCP Certified](https://img.shields.io/badge/GCP-Certified-4285F4?style=flat-square&logo=google-cloud&logoColor=white)
-![Oracle Certified](https://img.shields.io/badge/Oracle%20Cloud-Certified-F80000?style=flat-square&logo=oracle&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-Expert-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
-
-**Building enterprise-scale cloud infrastructure with 99.5% uptime | Reducing deployment times by 85% | Architecting systems for 10,000+ concurrent users**
-
----
-
-## 💼 **Why Hire Me?**
-
-### **Proven Track Record of Delivering Results**
-- ✅ **Achieved 99.5% system uptime** across multiple production environments
-- ✅ **Reduced deployment time by 85%** through automated CI/CD pipeline implementation
-- ✅ **Optimized system performance** from 200ms to 50ms response times
-- ✅ **Architected microservices** handling 10,000+ concurrent requests
-- ✅ **Cut infrastructure costs by 30%** using intelligent cloud resource management
-
-### **Ready to Deploy into IT environment from Day One**
-- 🎓 **Master's in Information Systems** - Northeastern University (Dec 2024)
-- 🏆 **Google Cloud Certified** - Cloud Digital Leader
-- 🏆 **Oracle Cloud Infrastructure** - Certified Architect Associate
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=flat-square&logo=terraform&logoColor=white)
+![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 
 ---
 
-## 🛠 **Core Technical Expertise**
+Cloud and DevOps engineer specializing in AWS infrastructure, CI/CD automation, Kubernetes orchestration, and observability. Experienced with Terraform-based IaC, GitOps pipelines (GitHub Actions + ArgoCD), and monitoring stacks (Prometheus, Grafana, Loki). Open source contributor with production-level exposure to cost optimization, security hardening, incident response, and technical documentation.
 
-### **Cloud Platforms & Infrastructure**
-```
-AWS (EC2, S3, RDS, ECS, EKS) | Google Cloud Platform | Digital Ocean
-Terraform | Docker & Kubernetes | CloudFormation | Packer
-```
-
-### **DevOps & Automation**
-```
-GitHub Actions | Jenkins | ArgoCD | GitOps
-CI/CD Pipeline Design | Infrastructure as Code | Monitoring & Alerting
-```
-
-### **Development & Databases**
-```
-Java (Spring Boot) | Python | React | MySQL | Redis
-Microservices Architecture | RESTful APIs | Database Optimization
-```
+**[Live Portfolio](https://saikalyanbportfolio.vercel.app)** · **[LinkedIn](https://www.linkedin.com/in/sai-kalyan-burra/)** · **[Medium](https://medium.com/@saikalyan.burra)** · <burra.sa@northeastern.edu>
 
 ---
 
-## 🏆 **Featured Projects That Prove My Value**
+## Education
 
-### **LinkOps Platform - Cloud-Native URL Shortening Service**
-**Business Impact:** *Handling 1M+ daily redirections for enterprise clients*
+**Northeastern University** — MS in Software Engineering Systems (Sep 2024 – Apr 2026)
+Coursework: Network Structures & Cloud Computing, Linux for Networking, Operating Systems
 
-- 🚀 **Scaled to 10,000+ concurrent requests** with 99.5% uptime
-- ⚡ **Improved response time by 75%** (200ms → 50ms) using Redis caching
-- 🔧 **Deployed 85% faster** with automated DevOps pipeline
-- 💰 **Reduced infrastructure costs** through optimized AWS ECS configuration
-
-**Tech Stack:** Spring Boot, MySQL, Docker, Redis, Kubernetes, AWS ECS, Terraform
-
-### **Enterprise Cloud Backend Application**
-**Business Impact:** *Supporting 5,000+ concurrent users with zero downtime*
-
-- 🌐 **Achieved 99% uptime** for mission-critical business operations
-- ⏱️ **Reduced provisioning time by 40%** using Infrastructure as Code
-- 🔒 **Implemented SOC 2 compliance** with AWS Secrets Manager
-- 💾 **Cut storage costs by 30%** with intelligent S3 lifecycle policies
-
-**Tech Stack:** Spring Boot, MySQL, AWS, Terraform, GitHub Actions
+**KL University** — B.Tech in Electronics and Communication Engineering (Jun 2021 – Apr 2024)
 
 ---
 
-## 📊 **Quantified Achievements**
+## Experience
 
-| Metric | Achievement | Business Value |
-|--------|-------------|----------------|
-| **System Uptime** | 99.5% | Minimized revenue loss from downtime |
-| **Deployment Speed** | 85% reduction | Faster feature delivery to market |
-| **Response Time** | 75% improvement | Enhanced user experience |
-| **Infrastructure Costs** | 30% reduction | Direct cost savings to organization |
-| **Concurrent Users** | 10,000+ supported | Scalable revenue growth potential |
+**Builtin Tech (Start-up)** — Software Engineer Intern, Cloud Infrastructure & Application Development
+*Feb 2023 – Jul 2023 · Hyderabad, India*
 
----
-
-## 🎯 **What I Bring to Your Team**
-
-### **Immediate Impact**
-- **Week 1:** Assess current infrastructure and identify optimization opportunities
-- **Month 1:** Implement monitoring and alerting systems for proactive issue resolution
-- **Month 3:** Deploy automated CI/CD pipelines reducing deployment time by 50%+
-- **Month 6:** Architect scalable solutions supporting 2x user growth
-
-### **Long-term Value**
-- **Cost Optimization:** Proven track record of reducing infrastructure costs by 30%
-- **Reliability Engineering:** Expertise in maintaining 99%+ uptime for critical systems
-- **Team Productivity:** Automation strategies that eliminate manual deployment processes
-- **Scalability Planning:** Experience designing systems for exponential growth
+- Coordinated a 5-person team building a cross-platform property management app — sprint planning, code reviews, Git workflow standards, Firebase backend with JavaScript; shipped on schedule with a 99.5% crash-free rate
+- Migrated static site hosting to S3 + CloudFront, wrote Bash scripts for cache invalidation and build release orchestration — ~60% faster page loads, ~40% lower hosting costs
+- Built FinOps dashboards using AWS Organizations, CloudWatch billing alarms, and cost anomaly detection — surfaced ~20% in previously untracked cloud spend
+- Hardened S3 storage with SSE-S3 encryption, versioning, lifecycle rules, and VPC endpoints for full data retention compliance
 
 ---
 
-## 🌟 **Live Portfolio Demonstration**
+## Featured Projects
 
-**See my skills in action:** [saikalyanbportfolio.vercel.app](http://saikalyanbportfolio.vercel.app)
+### TaskFlow — Cloud-Native CI/CD & Microservices Platform
 
-This interactive portfolio showcases:
-- ⚡ **Real-time terminal interface** demonstrating my attention to user experience
-- 🏗️ **Cloud-deployed infrastructure** showing deployment and hosting expertise
-- 💻 **Modern development practices** with React, responsive design, and performance optimization
-- 🔧 **Professional presentation** of technical achievements and project metrics
+`GitHub Actions` `ArgoCD` `Terraform` `Helm` `Docker` `Kubernetes (EKS)` `Prometheus` `Grafana` `Istio` `Vault` `OPA Gatekeeper` `Go`
 
----
+Scaled from 3 to 50+ microservices (Go, Python, Node.js, Java, Rust) on AWS EKS.
 
-## 📞 **Let's Connect**
+- Designed reusable Terraform modules with `for_each` patterns — per-service infra config reduced to variable declarations, environments provisioned in ~15 min
+- Built CI/CD handling 50+ services via GitHub Actions dynamic matrix builds with change detection — ~80% pipeline runtime reduction vs full rebuilds
+- Implemented ArgoCD ApplicationSets with Git directory generators — adding a service requires zero CD pipeline changes
+- Deployed Prometheus alerting, Grafana dashboards, Loki log aggregation, and Tempo distributed tracing — added Kubecost for cost monitoring, ~70% MTTD reduction
+- Enforced zero-trust security: Kubernetes Network Policies, Istio mTLS, OPA Gatekeeper policy-as-code, HashiCorp Vault secrets management
 
-**Ready to discuss how I can help your team achieve 99.5% uptime and optimize your cloud infrastructure.**
-
-- 📧 **Email:** burra.sa@northeastern.edu
-- 💼 **LinkedIn:** [linkedin.com/in/sai-kalyan-burra](https://www.linkedin.com/in/sai-kalyan-burra/)
-- 🔗 **GitHub:** [github.com/Sai9700128](https://github.com/Sai9700128)
-- 📍 **Location:** Boston, MA | (857) 339-8482
-- 🆔 **Work Authorization:** Authorized to work in the US
+**Repos:** [App](https://github.com/Sai9700128/gitops_app_Taskflow) · [GitOps Config](https://github.com/Sai9700128/gitops-config)
 
 ---
 
-## 🚀 **Next Steps**
+### Open Source Contributor — OpsiMate
 
-1. **Review my live portfolio** to see technical skills in action
-2. **Check my GitHub** for code quality and project depth
-3. **Schedule a conversation** to discuss your team's cloud infrastructure needs
-4. **Reference my certifications** to verify technical competency
+`Terraform` `Helm` `Kubernetes` `AWS EKS` `EC2` `GitHub Actions`
 
-**Available for immediate start | Open to relocation | Passionate about cloud technology**
+- Contributed Terraform modules and Helm charts with all PRs merged upstream — cut contributor onboarding from 4+ hours to under 10 minutes
+- Introduced CI quality gates (Helm linting, Terraform plan validation, automated unit tests) — shifted misconfiguration detection from post-deploy to code review
+- Authored architecture decision records, contributor guides, and operational runbooks; defined reusable Helm packaging conventions adopted as project standard
+
+**Repo:** [OpsiMate](https://github.com/OpsiMate/OpsiMate)
+
+---
+
+### Multi-Region Disaster Recovery on AWS
+
+`Terraform` `AWS (EC2, RDS, S3, Route 53, Lambda, CloudWatch)` `GitHub Actions` `Bash`
+
+- Designed active-passive DR across two AWS regions with warm standby — targeting 5-min RPO and 15-min RTO
+- Automated failover via Route 53 health checks, DNS failover routing, and cross-region replication — zero human involvement during simulated regional outages
+
+**Repo:** [Multi-Region-DR](https://github.com/Sai9700128/Multi-Region-DR)
+
+---
+
+## Technical Skills
+
+| Category | Technologies |
+|---|---|
+| **Languages** | Python, Go, Bash/Shell, Java, JavaScript, TypeScript, Node.js, HTML |
+| **Cloud** | AWS (EC2, VPC, S3, RDS, IAM, EKS, ECR, ECS/Fargate, Lambda, CloudWatch, Route 53, Secrets Manager), GCP (GKE, Cloud SQL) |
+| **Containers** | Kubernetes (EKS/GKE), Docker, docker-compose, Helm, Istio Service Mesh |
+| **IaC** | Terraform (multi-region modules), AWS CloudFormation |
+| **CI/CD** | Git, GitLab, GitHub Actions, ArgoCD, Build & Release Automation |
+| **Observability** | Prometheus, Grafana, Loki, CloudWatch, Alerting Rules, On-Call Triage, Runbooks |
+| **Security** | HashiCorp Vault, OPA Gatekeeper, Trivy, IAM Policies, SSE-S3 Encryption |
+| **Networking** | Linux (Ubuntu, CentOS), TCP/IP, DNS, VPC/Subnet Design, Network Policies, mTLS, Nginx, Bastion Host, SSH Tunneling |
+
+---
+
+## Certifications
+
+- **Google Cloud Certified** — Cloud Digital Leader (Jan 2023 – Jan 2026)
+- **AWS Solutions Architect — Associate** — In Progress
+
+---
+
+## Key Metrics
+
+| Metric | Result |
+|---|---|
+| Microservices scaled | 3 → 50+ |
+| CI pipeline runtime reduction | ~80% |
+| Mean time to detection improvement | ~70% |
+| DR failover | Zero human involvement |
+| Contributor onboarding time | 4+ hrs → <10 min |
+
+---
+
+## Blog
+
+I write about cloud engineering, DevOps, and infrastructure on [Medium](https://medium.com/@saikalyan.burra).
+
+---
+
+## Contact
+
+📧 <burra.sa@northeastern.edu> · 📍 Brookline, MA · 📞 (857) 339-8482
+
+**Available for immediate start · STEM OPT authorized · Open to relocation**
