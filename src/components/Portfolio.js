@@ -23,28 +23,28 @@ const Portfolio = () => {
         'Cloud & DevOps Engineer | MS @ Northeastern',
         '',
         '$ cat achievements.txt',
-        '→ 50+ microservices scaled via GitOps',
-        '→ ~80% CI pipeline runtime reduction',
-        '→ Zero-touch DR failover',
-        '→ PRs #256 & #257 merged upstream',
+        '> 50+ microservices scaled via GitOps',
+        '> ~80% CI pipeline runtime reduction',
+        '> Zero-touch DR failover',
+        '> PRs #256 & #257 merged upstream',
         '',
         '$ tech_stack --current',
-        '☁️  Cloud: AWS • GCP',
-        '🔧 IaC: Terraform • CloudFormation • Helm',
-        '🐳 Containers: Kubernetes (EKS/GKE) • Docker • Istio',
-        '🔁 CI/CD: GitHub Actions • ArgoCD • GitLab',
-        '🔐 Security: Vault • OPA • Trivy • IAM',
-        '📊 Observability: Prometheus • Grafana • Loki • Tempo',
-        '💻 Code: Python • Go • Bash • TypeScript • Java',
-        '🐧 Linux: UFW • fail2ban • Nginx • systemd • TLS',
+        'Cloud: AWS, GCP',
+        'IaC: Terraform, CloudFormation, Helm',
+        'Containers: Kubernetes (EKS/GKE), Docker, Istio',
+        'CI/CD: GitHub Actions, ArgoCD, GitLab',
+        'Security: Vault, OPA, Trivy, IAM',
+        'Observability: Prometheus, Grafana, Loki, Tempo',
+        'Code: Python, Go, Bash, TypeScript, Java, x86 Assembly',
+        'Linux: UFW, fail2ban, Nginx, systemd, TLS',
         '',
         '$ ls certifications/',
         'google-cloud-digital-leader.cert',
         'aws-solutions-architect.in-progress',
         '',
         '$ ./connect',
-        '📧 saikalyanx1@gmail.com',
-        '💼 LinkedIn | 🐙 GitHub'
+        'saikalyanx1@gmail.com',
+        'LinkedIn | GitHub'
     ], []);
 
     useEffect(() => {
@@ -125,16 +125,16 @@ const Portfolio = () => {
         "Observability & Monitoring": ["Prometheus", "Grafana", "Loki", "CloudWatch", "Kubecost", "Alerting Rules", "node_exporter", "Runbooks"],
         "Security": ["HashiCorp Vault", "OPA Gatekeeper", "Trivy Container Scanning", "IAM Policies", "SSE-S3 Encryption"],
         "Networking & Systems": ["Linux Administration (Ubuntu 24.04, CentOS)", "systemd", "SSH hardening", "UFW", "fail2ban", "Nginx", "TLS/certbot", "logrotate", "cron", "TCP/IP", "DNS", "VPC/Subnet Design", "Network Policies", "mTLS", "SSH Tunneling"],
-        "Languages & Scripting": ["Python", "Go", "Bash/Shell Scripting", "Java", "JavaScript", "TypeScript", "Node.js"]
+        "Languages & Scripting": ["Python", "Go", "Bash/Shell Scripting", "Java", "JavaScript", "TypeScript", "Node.js", "x86 Assembly"]
     };
 
     const projects = [
         {
-            title: "ShipForge — Cloud-Native CI/CD & Microservices Platform",
+            title: "ShipForge - Cloud-Native CI/CD & Microservices Platform",
             subtitle: "Production-Grade Kubernetes Platform with GitOps & Zero-Trust Security",
             period: "December 2025 - May 2026",
-            tech: "GitHub Actions • ArgoCD • Terraform • Helm • Docker • Kubernetes (EKS) • Prometheus • Grafana • Istio • Vault • OPA Gatekeeper • Go",
-            summary: "Built a cloud-native CI/CD platform scaling from 3 to 50+ microservices using reusable Terraform modules and GitOps via ArgoCD ApplicationSets. GitHub Actions matrix builds with change detection cut pipeline runtime by ~80%. Full observability stack (Prometheus, Grafana, Loki, Tempo) provides deployment health visibility across all services. Zero-trust security enforced via Istio mTLS, OPA Gatekeeper, and HashiCorp Vault — achieving zero critical findings in Trivy scans.",
+            tech: "GitHub Actions, ArgoCD, Terraform, Helm, Docker, Kubernetes (EKS), Prometheus, Grafana, Istio, Vault, OPA Gatekeeper, Go",
+            summary: "Built a cloud-native CI/CD platform scaling from 3 to 50+ microservices using reusable Terraform modules and GitOps via ArgoCD ApplicationSets. GitHub Actions matrix builds with change detection cut pipeline runtime by ~80%. Full observability stack (Prometheus, Grafana, Loki, Tempo) provides deployment health visibility across all services. Zero-trust security enforced via Istio mTLS, OPA Gatekeeper, and HashiCorp Vault - achieving zero critical findings in Trivy scans.",
             githubUrl: "https://github.com/Sai9700128/gitops_app_Taskflow",
             githubUrl2: "https://github.com/Sai9700128/gitops-config",
             githubLabel1: "App",
@@ -142,42 +142,49 @@ const Portfolio = () => {
             hasTwoLinks: true,
         },
         {
-            title: "LinuxOps Homelab — Production Server Hardening",
+            title: "MyOS - Interactive Operating System from Scratch",
+            subtitle: "Bare-Metal x86 Kernel with a Custom Bootloader and Interactive Shell",
+            period: "December 2025",
+            tech: "x86 Assembly (NASM), QEMU, Make, Bare-Metal / OS Development",
+            summary: "Wrote a custom bootloader and kernel in x86 Assembly, running in 32-bit protected mode with direct VGA text-mode display output. Built a keyboard-driven command shell handling PS/2 input, supporting commands like info, list, mem, and time. Implemented low-level system introspection entirely from raw hardware interaction, with no OS or libc underneath.",
+        },
+        {
+            title: "LinuxOps Homelab - Production Server Hardening",
             subtitle: "Hardened Ubuntu 24.04 EC2 with Nginx, TLS, and Host Observability",
             period: "June 2026",
-            tech: "Ubuntu 24.04 • Nginx • Let's Encrypt • UFW • fail2ban • node_exporter • systemd • cron • logrotate",
+            tech: "Ubuntu 24.04, Nginx, Let's Encrypt, UFW, fail2ban, node_exporter, systemd, cron, logrotate",
             summary: "Provisioned and hardened a production-grade Ubuntu 24.04 EC2 server serving a live static site over HTTPS. Implemented SSH key-only auth, UFW host firewall, fail2ban brute-force protection, and automated security patching. Configured Nginx with TLS termination, security headers (HSTS, X-Frame-Options), and logrotate. Deployed node_exporter as a systemd service for host-level metrics. Documented all operational procedures in a runbook.",
             githubUrl: "https://github.com/Sai9700128/linux-ops-homelab",
         },
         {
-            title: "InfraLens — AI-Powered Terraform Review Pipeline",
+            title: "InfraLens - AI-Powered Terraform Review Pipeline",
             subtitle: "Automated Infrastructure Code Review with Policy Enforcement",
             period: "April 2026",
-            tech: "GitHub Actions • Claude API • OPA Rego • tflint • Checkov",
-            summary: "Built an AI-powered Terraform review pipeline using GitHub Actions and the Claude API to analyze infrastructure diffs on every PR. OPA Rego policy gates block merges on critical findings. tflint and Checkov run as pre-AI static analysis to reduce noise — Claude's output is structured as severity-tiered JSON consumed by OPA for automated enforcement and PR comment feedback.",
+            tech: "GitHub Actions, Claude API, OPA Rego, tflint, Checkov",
+            summary: "Built an AI-powered Terraform review pipeline using GitHub Actions and the Claude API to analyze infrastructure diffs on every PR. OPA Rego policy gates block merges on critical findings. tflint and Checkov run as pre-AI static analysis to reduce noise - Claude's output is structured as severity-tiered JSON consumed by OPA for automated enforcement and PR comment feedback.",
             githubUrl: "https://github.com/Sai9700128/AI_infra_reviewer",
         },
         {
-            title: "OpsiMate — Open Source Contributor",
+            title: "OpsiMate - Open Source Contributor",
             subtitle: "Unified Alert Management Platform",
             period: "January 2026",
-            tech: "Terraform • Helm • Kubernetes • AWS EKS • EC2 • GitHub Actions",
-            summary: "Contributed Terraform modules and Helm charts to an open-source alert management platform — PRs #256 and #257 merged upstream. Helm packaging cut contributor onboarding from 4+ hours to under 10 minutes. Introduced CI quality gates (Helm linting, Terraform plan validation, unit tests) at the PR level, adopted as the standard across all subsequent contributions.",
+            tech: "Terraform, Helm, Kubernetes, AWS EKS, EC2, GitHub Actions",
+            summary: "Contributed Terraform modules and Helm charts to an open-source alert management platform - PRs #256 and #257 merged upstream. Helm packaging cut contributor onboarding from 4+ hours to under 10 minutes. Introduced CI quality gates (Helm linting, Terraform plan validation, unit tests) at the PR level, adopted as the standard across all subsequent contributions.",
             githubUrl: "https://github.com/Sai9700128/OpsiMate",
         },
         {
             title: "Multi-Region Disaster Recovery on AWS",
             subtitle: "Active-Passive DR with Automated Failover",
             period: "November - December 2025",
-            tech: "Terraform • AWS (EC2, RDS, S3, Route 53, Lambda, CloudWatch) • GitHub Actions • Bash",
-            summary: "Designed an active-passive DR architecture across two AWS regions targeting a 5-minute RPO and 15-minute RTO. Automated failover via Route 53 health checks and DNS failover routing — zero human involvement during simulated regional outages.",
+            tech: "Terraform, AWS (EC2, RDS, S3, Route 53, Lambda, CloudWatch), GitHub Actions, Bash",
+            summary: "Designed an active-passive DR architecture across two AWS regions targeting a 5-minute RPO and 15-minute RTO. Automated failover via Route 53 health checks and DNS failover routing - zero human involvement during simulated regional outages.",
             githubUrl: "https://github.com/Sai9700128/Multi-Region-DR",
         },
         {
-            title: "Cloud-Native WebApp — Production AWS Infrastructure",
+            title: "Cloud-Native WebApp - Production AWS Infrastructure",
             subtitle: "Scalable AWS Infrastructure with Terraform & Packer",
             period: "January - April 2025",
-            tech: "Terraform • AWS • Packer • GitHub Actions • CloudWatch • GCP",
+            tech: "Terraform, AWS, Packer, GitHub Actions, CloudWatch, GCP",
             summary: "Architected AWS infrastructure supporting 5,000+ concurrent users with 99% uptime. Automated AMI builds with Packer reduced deployment time by 40%. S3 lifecycle policies managing 500GB+ data cut storage costs by 30%. Terraform module refactoring reduced infrastructure code duplication by 60% across environments.",
             githubUrl: "https://github.com/Sai9700128/Webapp",
             githubUrl2: "https://github.com/Sai9700128/tf-aws-infra",
@@ -187,17 +194,42 @@ const Portfolio = () => {
         },
     ];
 
-    const experience = {
-        company: "Builtin Tech (Start-up)",
-        role: "Software Engineer Intern — Cloud Infrastructure & Application Development",
-        period: "February 2023 - July 2023",
-        location: "Hyderabad, India",
-        highlights: [
-            "Led a 5-person team delivering a cross-platform property management app — sprint planning, code reviews, Git standards, and Firebase backend in JavaScript.",
-            "Built FinOps dashboards via AWS Organizations and CloudWatch billing alarms, surfacing 20% in previously untracked cloud spend.",
-            "Hardened S3 with SSE-S3 encryption, versioning, lifecycle rules, and VPC endpoints — documented as an internal compliance runbook."
-        ]
-    };
+    const experiences = [
+        {
+            company: "American Technology Initiative",
+            role: "Linux System Admin Volunteer",
+            period: "June 2026 - Present",
+            location: "Remote",
+            highlights: [
+                "Architected a production-ready 2-node Kubernetes cluster on a dual-Linux server environment for a nonprofit, configuring networking, container runtime prerequisites, and node bootstrapping from scratch.",
+                "Standardized on open-source Kubernetes tooling to match managed-service functionality at zero licensing cost, selecting a configuration built for long-term maintainability over quick setup.",
+                "Driving a technical specification comparing high-end and entry-level AI server builds across CPU/GPU options and total cost of ownership, translating supplier research into a procurement-ready recommendation."
+            ]
+        },
+        {
+            company: "Independent",
+            role: "Freelance Web & Cloud Systems Consultant",
+            period: "November 2023 - February 2024",
+            location: "Remote",
+            highlights: [
+                "Delivered self-sufficient infrastructure for small business clients by provisioning and administering Linux-based EC2 instances, owning patching, monitoring, and backup cycles end to end.",
+                "Architected low-cost S3-based hosting with scoped IAM access controls, cutting hosting costs and removing the need for a dedicated server for client static websites.",
+                "Designed and deployed a serverless AWS Lambda pipeline triggered on S3 uploads to automate image processing for a client engagement, eliminating manual resizing work.",
+                "Took two local businesses, a bakery and an embroidery shop, from concept to live web presence, independently owning WordPress site design, hosting configuration, and go-live."
+            ]
+        },
+        {
+            company: "Builtin Tech (Start-up)",
+            role: "Software Engineer Intern - Cloud Infrastructure & Application Development",
+            period: "February 2023 - July 2023",
+            location: "Hyderabad, India",
+            highlights: [
+                "Led a 5-person team delivering a cross-platform property management app - sprint planning, code reviews, Git standards, and Firebase backend in JavaScript.",
+                "Built FinOps dashboards via AWS Organizations and CloudWatch billing alarms, surfacing 20% in previously untracked cloud spend.",
+                "Hardened S3 with SSE-S3 encryption, versioning, lifecycle rules, and VPC endpoints - documented as an internal compliance runbook."
+            ]
+        }
+    ];
 
     const achievements = [
         { metric: "50+", label: "Microservices Scaled" },
@@ -235,7 +267,6 @@ const Portfolio = () => {
                         <p style={styles.heroGreeting}>Hello,</p>
                         <h1 style={styles.heroTitle}>
                             <span style={styles.heroName}>Sai Kalyan here!</span>
-                            <span style={styles.heroWave}> 👋🏽</span>
                         </h1>
                         <div style={styles.roleContainer}>
                             <p style={styles.heroSubtitle}>
@@ -280,14 +311,14 @@ const Portfolio = () => {
                     <h2 style={styles.sectionTitleDark}>Education</h2>
                     <div style={styles.educationGrid}>
                         <div style={styles.eduCard}>
-                            <div style={styles.eduPeriod}>Sep 2024 — Apr 2026</div>
+                            <div style={styles.eduPeriod}>Sep 2024 - Apr 2026</div>
                             <h4 style={styles.eduInstitution}>Northeastern University</h4>
                             <p style={styles.eduDegree}>Master of Science in Software Engineering Systems</p>
                             <p style={styles.eduLocation}>Boston, MA</p>
                             <p style={styles.eduCoursework}>Coursework: Network Structures & Cloud Computing, Linux for Networking, Operating Systems</p>
                         </div>
                         <div style={styles.eduCard}>
-                            <div style={styles.eduPeriod}>Jun 2021 — Apr 2024</div>
+                            <div style={styles.eduPeriod}>Jun 2021 - Apr 2024</div>
                             <h4 style={styles.eduInstitution}>KL University</h4>
                             <p style={styles.eduDegree}>Bachelor in Electronics and Communication Engineering</p>
                             <p style={styles.eduLocation}>Hyderabad, India</p>
@@ -301,26 +332,30 @@ const Portfolio = () => {
                 <div style={styles.sectionContent}>
                     <h2 style={styles.sectionTitleDark}>Professional Experience</h2>
                     <p style={styles.sectionSubDark}>Building scalable solutions in the cloud</p>
-                    <div style={styles.expCard}>
-                        <div style={styles.expHeader}>
-                            <div style={styles.expIconWrap}><Briefcase size={22} color="#1a1a1a" /></div>
-                            <div>
-                                <h3 style={styles.expCompany}>{experience.company}</h3>
-                                <p style={styles.expRole}>{experience.role}</p>
-                                <div style={styles.expMeta}>
-                                    <span>{experience.period}</span>
-                                    <span>📍 {experience.location}</span>
+                    <div style={styles.expList}>
+                        {experiences.map((exp, i) => (
+                            <div key={i} style={styles.expCard}>
+                                <div style={styles.expHeader}>
+                                    <div style={styles.expIconWrap}><Briefcase size={22} color="#1a1a1a" /></div>
+                                    <div>
+                                        <h3 style={styles.expCompany}>{exp.company}</h3>
+                                        <p style={styles.expRole}>{exp.role}</p>
+                                        <div style={styles.expMeta}>
+                                            <span>{exp.period}</span>
+                                            <span>{exp.location}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style={styles.expHighlights}>
+                                    {exp.highlights.map((h, j) => (
+                                        <div key={j} style={styles.expHighlight}>
+                                            <div style={styles.expDot}></div>
+                                            <span>{h}</span>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
-                        </div>
-                        <div style={styles.expHighlights}>
-                            {experience.highlights.map((h, i) => (
-                                <div key={i} style={styles.expHighlight}>
-                                    <div style={styles.expDot}></div>
-                                    <span>{h}</span>
-                                </div>
-                            ))}
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -329,7 +364,7 @@ const Portfolio = () => {
             <section style={styles.darkSection}>
                 <div style={styles.sectionContent}>
                     <h2 style={styles.sectionTitleLight}>Featured Project</h2>
-                    <p style={styles.sectionSubLight}>ShipForge — Cloud-Native CI/CD & Microservices Platform</p>
+                    <p style={styles.sectionSubLight}>ShipForge - Cloud-Native CI/CD & Microservices Platform</p>
                     <div style={styles.featuredCard}>
                         <div style={styles.featuredGrid}>
                             <div>
@@ -348,7 +383,7 @@ const Portfolio = () => {
                                         "Observability: Prometheus + Grafana + Loki + Tempo"
                                     ].map((f, i) => (
                                         <div key={i} style={styles.featuredFeature}>
-                                            <span style={styles.featureBullet}>—</span>
+                                            <span style={styles.featureBullet}>-</span>
                                             <span>{f}</span>
                                         </div>
                                     ))}
@@ -379,8 +414,8 @@ const Portfolio = () => {
                                     <div style={styles.cmdResult}>user-service      3/3     Running</div>
                                     <div style={styles.cmdResult}>... 47 more services</div>
                                     <div style={styles.cmdLine}>$ argocd app sync shipforge</div>
-                                    <div style={styles.cmdResult}>✓ Synced (Healthy) — 50+ apps</div>
-                                    <div style={styles.cmdLine}>$ █</div>
+                                    <div style={styles.cmdResult}>OK Synced (Healthy) - 50+ apps</div>
+                                    <div style={styles.cmdLine}>$ _</div>
                                 </div>
                             </div>
                         </div>
@@ -404,10 +439,12 @@ const Portfolio = () => {
                                         <p style={styles.projectSummary}>{project.summary}</p>
                                     </div>
                                     <div style={styles.projectActions}>
-                                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" style={styles.btnDark}>
-                                            <Github size={16} />
-                                            {project.hasTwoLinks ? project.githubLabel1 : 'GitHub'}
-                                        </a>
+                                        {project.githubUrl && (
+                                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" style={styles.btnDark}>
+                                                <Github size={16} />
+                                                {project.hasTwoLinks ? project.githubLabel1 : 'GitHub'}
+                                            </a>
+                                        )}
                                         {project.hasTwoLinks && (
                                             <a href={project.githubUrl2} target="_blank" rel="noopener noreferrer" style={styles.btnOutlineDark}>
                                                 <Github size={16} />
@@ -471,7 +508,7 @@ const Portfolio = () => {
             {/* Contact */}
             <section id="contact" style={styles.lightSectionAlt}>
                 <div style={styles.contactContent}>
-                    <h2 style={styles.contactTitle}>Let's Build Something Amazing</h2>
+                    <h2 style={styles.contactTitle}>Build Something Amazing Together</h2>
                     <p style={styles.contactDesc}>Ready to discuss new opportunities, collaborations, or just chat about tech?</p>
                     <div style={styles.contactGrid}>
                         <a href="mailto:saikalyanx1@gmail.com" style={styles.contactCard}>
@@ -490,14 +527,14 @@ const Portfolio = () => {
                             <div style={styles.contactCardValue}>View my code</div>
                         </a>
                     </div>
-                    <p style={styles.locationText}>📍 Brookline, MA · (857) 339-8482</p>
+                    <p style={styles.locationText}>Brookline, MA - (857) 339-8482</p>
                 </div>
             </section>
 
             {/* Footer */}
             <footer style={styles.footer}>
                 <div style={styles.footerContent}>
-                    <p>© 2026 Sai Kalyan Burra. Building the future with cloud technology.</p>
+                    <p>Copyright 2026 Sai Kalyan Burra. Building the future with cloud technology.</p>
                 </div>
             </footer>
         </div>
@@ -554,6 +591,7 @@ const styles = {
     eduLocation: { fontSize: '0.85rem', color: '#999', margin: 0 },
     eduCoursework: { fontSize: '0.8rem', color: '#888', marginTop: '0.75rem', fontStyle: 'italic', lineHeight: '1.5' },
     expCard: { background: '#f7f7f7', borderRadius: '20px', padding: '2.5rem', border: '1px solid #e8e8e8' },
+    expList: { display: 'flex', flexDirection: 'column', gap: '1.5rem' },
     expHeader: { display: 'flex', alignItems: 'flex-start', gap: '1.25rem', marginBottom: '2rem' },
     expIconWrap: { background: '#e8e8e8', borderRadius: '12px', padding: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
     expCompany: { fontSize: '1.4rem', fontWeight: '700', color: '#1a1a1a', marginBottom: '0.3rem' },
